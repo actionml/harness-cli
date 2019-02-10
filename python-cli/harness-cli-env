@@ -1,0 +1,34 @@
+# harness cli environment file (sourced by scripts)
+
+# Harness CLI config, should work as-is unless you are using SSL or connecting to a remote Harness Server
+export HARNESS_SERVER_ADDRESS=localhost
+export HARNESS_SERVER_PORT=9090
+
+# Java and Python client SDKs use the following for TLS/SSL, not used by the server
+# the file provided works with localhost, create your own for some other IP address
+export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.pem}
+
+# =============================================================
+# Only change to enable TLS/SSL
+# =============================================================
+
+# export HARNESS_CLI_SSL_ENABLED=true # to enable TLS/SSL using the rest below for "localhost" keys passwords and certs
+export HARNESS_CLI_SSL_ENABLED=false
+
+# Harness TLS/SSL server support. A file needs to be provided even if TLS is not used, one is supplied for "localhost"
+#export HARNESS_KEYSTORE_PASSWORD=${HARNESS_KEYSTORE_PASSWORD:-changeit}
+#export HARNESS_KEYSTORE_PATH=${HARNESS_KEYSTORE_PATH:-$HARNESS_CLI_HOME/conf/harness.jks}
+
+# =============================================================
+# Only used for Authentication
+# =============================================================
+
+# Harness Auth-Server setup
+# export HARNESS_CLI_AUTH_ENABLED=true
+export HARNESS_CLI_AUTH_ENABLED=${HARNESS_CLI_AUTH_ENABLED:-false}
+# When auth is enabled there must be an admin user-id set so create one before turning on Auth
+# Both the Harness server and the Python CLI need this env var when using Auth
+# export ADMIN_USER_ID=some-user-id
+# The Python CLI needs to pass the user-id and user-secret to the Python SDK so when using Auth supply a pointer to
+# the user-secret here.
+# export ADMIN_USER_SECRET_LOCATION=${ADMIN_USER_SECRET_LOCATION:-"$HOME/.ssh/${ADMIN_USER_ID}.secret"}

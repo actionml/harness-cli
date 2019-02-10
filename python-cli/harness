@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+. "$(cd "`dirname "$0"`"; pwd)/common.sh"
+
+command="$1"
+shift
+
+case ${command} in
+  start) ${HARNESS_CLI_HOME}/harness-start -d "$@" ;;
+  stop) ${HARNESS_CLI_HOME}/harness-stop "$@" ;;
+  status) ${HARNESS_CLI_HOME}/harness-status "$@" ;;
+  add) ${HARNESS_CLI_HOME}/harness-engine-add "$@" ;;
+  update) ${HARNESS_CLI_HOME}/harness-engine-update "$@" ;;
+  delete) ${HARNESS_CLI_HOME}/harness-engine-delete "$@" ;;
+  import) ${HARNESS_CLI_HOME}/harness-engine-import "$@" ;;
+  user-add) ${HARNESS_CLI_HOME}/harness-user-add "$@" ;;
+  user-delete) ${HARNESS_CLI_HOME}/harness-user-delete "$@" ;;
+  grant) ${HARNESS_CLI_HOME}/harness-grant "$@" ;;
+  revoke) ${HARNESS_CLI_HOME}/harness-revoke "$@" ;;
+  train) ${HARNESS_CLI_HOME}/harness-engine-train "$@" ;;
+  *) ${HARNESS_CLI_HOME}/harness-help ;;
+esac
