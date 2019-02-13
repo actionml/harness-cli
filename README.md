@@ -64,13 +64,18 @@ In a terminal shell type `harness-cli` to get help.
 
 # Examples
 
-The examples directory comes with some tests for the Universal Recommender that illustrate how to use this cli remotely and with several different configurations for the Harness cluster.
+The examples directory comes with some tests for the Universal Recommender that illustrate how to use this cli remotely and with several different configurations for a Harness cluster.
 
-To use this setup with integration tests make the changes to the cli above then run the test with new params for the remote installation of harness like this:
+To use this setup with integration tests make the changes to the cli above then make sure the engine's JSON config used in the test has changes that reflect the harness installation's internal addressing for Elasticsearch and Spark. Check the engine's config `sparkConf` section for:
+
+ -  `"master": "spark://some-spark-master:7077"` This shoudl point to the correct Spark master, or use `"local"` to use the Spark build-in to Harness
+ -  `"es.nodes": "some-es-node-1,some-es-node2"` These shoudl be the IPs or DNS names of the ES nodes in the installation
+
+Run the test with new params for the remote installation of harness like this:
 
  - `cd harness-cli/`
  - `./examples/ur/ur-integration-test.sh address-of-harness port-of-harness`
 
-The tests do not currently work with https.
+Note: Tests do not currently work with https.
  
 The test will pause to allow training to finish, then again for permission to send queries. At the end it will compare actual results to expected ones and exit with 0 if the tests pass or 1 if they do not.
