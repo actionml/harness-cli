@@ -7,7 +7,7 @@ ENGINE_ID=$2
 
 if [ -z "$ROLE_SET" ]; then
     echo -e "${RED}User role not specified${NC}"
-    echo -e "Expected command: ${CYAN}harness add-user [client | admin] [<engine-id>]${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli add-user [client | admin] [<engine-id>]${NC}"
     exit 1
 fi
 
@@ -21,7 +21,7 @@ if [ ! -z "$ENGINE_ID" ]; then
         exit $?
     elif [ "${ROLE_SET}" = "admin" ]; then
         echo -e "${RED}An engine-id is ignored for an \"admin\" user since admin have access to all resources${NC}"
-        echo -e "Expected command: ${CYAN}harness add-user admin${NC}"
+        echo -e "Expected command: ${CYAN}harness-cli add-user admin${NC}"
         PYTHON_ARGS="user-add --role_set ${ROLE_SET} $USER_ARGS"
 
         #echo -e "${CYAN}Run ${HARNESS_CLI_HOME}/users.py ${PYTHON_ARGS}${NC}"
@@ -30,7 +30,7 @@ if [ ! -z "$ENGINE_ID" ]; then
         exit $?
     else
       echo -e "${RED}Unrecognized role: ${ROLE_SET}${NC}"
-      echo -e "Expected command: ${CYAN}harness add-user [admin | client <engine-id>]${NC}"
+      echo -e "Expected command: ${CYAN}harness-cli add-user [admin | client <engine-id>]${NC}"
       exit 1
     fi
 fi

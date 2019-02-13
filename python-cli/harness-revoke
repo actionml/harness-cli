@@ -11,7 +11,7 @@ RESOURCE_ID=$3
 if [[ "${ROLE_SET}" != "admin" ]] && [[ -z "$USER_ID"  || -z "$ROLE_SET" ]]; then
     echo -e "${RED}Malformed command, not enough parameters${NC}"
     # the following is wrong, should revoke for aa resource-id not a role-set
-    echo -e "Expected command: ${CYAN}harness revoke <user-id> [client | admin]${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli revoke <user-id> [client | admin]${NC}"
     exit 1
 fi
 

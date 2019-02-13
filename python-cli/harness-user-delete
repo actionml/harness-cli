@@ -8,7 +8,7 @@ case "$1" in
         EXTRA_PARAM=$1
         if [ ! -z "$EXTRA_PARAM" ]; then
             echo -e "${RED}Too many parameters for command${NC}"
-            echo -e "Expected command: ${CYAN}harness user-delete <user-id>${NC}"
+            echo -e "Expected command: ${CYAN}harness-cli user-delete <user-id>${NC}"
         fi
         ;;
 esac
@@ -16,7 +16,7 @@ esac
 
 if [ -z "$USER_ID" ]; then
     echo -e "${RED}User-id not specified${NC}"
-    echo -e "Expected command: ${CYAN}harness user-delete <user-id>${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli user-delete <user-id>${NC}"
     exit 1
 fi
 

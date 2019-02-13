@@ -12,13 +12,13 @@ esac
 
 if [ -z "$ENGINE_CONFIG" ]; then
     echo -e "${RED}Engine config file not specified!${NC}"
-    echo -e "Expected command: ${CYAN}harness update <some-engine.json>${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli update <some-engine.json>${NC}"
     exit 1
 fi
 
 if [ ! -f ${ENGINE_CONFIG} ]; then
     echo -e "${RED}Engine config file [${ENGINE_CONFIG}] not found!${NC}"
-    echo -e "Expected command: ${CYAN}harness update <some-engine.json>${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli update <some-engine.json>${NC}"
     echo -e "Verify that the correct path is specified."
     exit 1
 fi

@@ -6,8 +6,8 @@ command="$1"
 shift
 
 case ${command} in
-  start) ${HARNESS_CLI_HOME}/harness-start -d "$@" ;;
-  stop) ${HARNESS_CLI_HOME}/harness-stop "$@" ;;
+#  start) ${HARNESS_CLI_HOME}/harness-start -d "$@" ;;
+#  stop) ${HARNESS_CLI_HOME}/harness-stop "$@" ;;
   status) ${HARNESS_CLI_HOME}/harness-status "$@" ;;
   add) ${HARNESS_CLI_HOME}/harness-engine-add "$@" ;;
   update) ${HARNESS_CLI_HOME}/harness-engine-update "$@" ;;

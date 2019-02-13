@@ -19,7 +19,7 @@ if [ -z "${HARNESS_CLI_HOME}" ]; then
 
   if [ $? -eq 0 -a -n "${source_path}" ]; then
     # readlink has -f and suceeded
-    export HARNESS_CLI_HOME=$(dirname "${source_path%/*}")
+    export HARNESS_CLI_HOME=$(dirname "${source_path%/*}/python-cli")
   else
     # try recursively locate while we get links
     target_dir=$(cd `dirname "$0"`; pwd)
@@ -27,7 +27,7 @@ if [ -z "${HARNESS_CLI_HOME}" ]; then
       target_dir=$(ls -l "${target_dir}" | sed 's/.* -> //')
       target_dir="$(cd `dirname "${target_dir}"`; pwd)"
     done
-    export HARNESS_CLI_HOME="${target_dir}"
+    export HARNESS_CLI_HOME="${target_dir}/python-cli"
   fi
 fi
 

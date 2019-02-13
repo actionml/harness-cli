@@ -9,7 +9,7 @@ RESOURCE_ID=$3
 
 if [[ "${ROLE_SET}" != "admin" ]] && [[ -z "$USER_ID"  || -z "$ROLE_SET"  || -z "$RESOURCE_ID" ]]; then
     echo -e "${RED}Malformed command, not enough parameters${NC}"
-    echo -e "Expected command: ${CYAN}harness grant <user-id> [client <engine-id> | admin]${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli grant <user-id> [client <engine-id> | admin]${NC}"
     exit 1
 fi
 

@@ -1,0 +1,53 @@
+{
+  "size" : 20,
+  "from" : 0,
+  "query" : {
+    "bool" : {
+      "should" : [ {
+        "terms" : {
+          "purchase" : [ "iPad Pro" ]
+        }
+      }, {
+        "constant_score" : {
+          "filter" : {
+            "match_all" : { }
+          },
+          "boost" : 0
+        }
+      } ],
+      "must" : [ ],
+      "must_not" : [ ],
+      "filter" : [ {
+        "range" : {
+          "availableDate" : {
+            "lte" : "2018-12-20T01:42:19.550-08:00"
+          }
+        }
+      }, {
+        "range" : {
+          "date" : {
+            "gte" : "2017-12-20T01:42:19.450-08:00",
+            "lte" : "2017-12-26T01:42:19.450-08:00"
+          }
+        }
+      }, {
+        "range" : {
+          "expireDate" : {
+            "gte" : "2018-12-20T01:42:19.550-08:00"
+          }
+        }
+      } ],
+      "minimum_should_match" : 1
+    }
+  },
+  "sort" : [ {
+    "_score" : {
+      "order" : "desc"
+    }
+  }, {
+    "popRank" : {
+      "unmapped_type" : "double",
+      "order" : "desc"
+    }
+  } ]
+}

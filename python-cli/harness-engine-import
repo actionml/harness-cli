@@ -2,7 +2,7 @@
 
 . "$(cd "`dirname "$0"`"; pwd)/common.sh"
 
-# harness import resource-id file-or-dir-name
+# harness-cli import resource-id file-or-dir-name
 #               ^ shifted to
 
 while [ -n "$1" ]; do
@@ -19,7 +19,7 @@ done
 
 if [ -z "$resource_id" ]; then
     echo -e "${RED}Engine resource id not specified!${NC}"
-    echo -e "Expected command: ${CYAN}harness import <engine-id> [<some-directory> | <some-file>]${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli import <engine-id> [<some-directory> | <some-file>]${NC}"
     echo "The engine-id is missing."
     exit 1
 fi
@@ -27,7 +27,7 @@ fi
 # Now that we allow HDFS we cannot check for existence from the CLI
 #if [ ! -f ${import_path} ] && [ ! -d ${import_path} ]; then
 #    echo -e "${RED}Engine events JSON file [${import_path}] not found!${NC}"
-#    echo -e "Expected command: ${CYAN}harness import <engine-id> [<some-directory> | <some-file>]${NC}"
+#    echo -e "Expected command: ${CYAN}harness-cli import <engine-id> [<some-directory> | <some-file>]${NC}"
 #    echo -e "Verify that the correct directory or file path is specified."
 #    exit 1
 #fi
