@@ -2,9 +2,9 @@
 
 The Harness Command Line Interface uses a connection to a running Harness Server to do administrative tasks. 
 
-**Until we integrate this CLI and the integrated one is removed from harness use this one with `harness-cli status` etc instead of `harness status`. This is so the 2 can co-exist until a full switchover is made to this version.**
+**Until we deprecate and remove the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will go back to `harness status` etc**
 
-**Note:**The CLI cannot be used to start or stop Harness, See the Harness Server documents for how to do this.
+**Note:**This CLI cannot be used to start or stop Harness, use the integrates cli to do this.
 
 ## Requirements
 
