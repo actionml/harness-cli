@@ -79,3 +79,9 @@ Run the test with new params for the remote installation of harness like this:
 Note: Tests do not currently work with https.
  
 The test will pause to allow training to finish, then again for permission to send queries. At the end it will compare actual results to expected ones and exit with 0 if the tests pass or 1 if they do not.
+
+# Roadmap
+
+This will be converted completely to Python and will target many possible configs pointing to different harness servers. It will do this in a similar way to how git works by searching back from the current directory to find a `.harness` directory with a `config.yml` file. This will allow working directories to point to different instances. The `config.yml` file will have similar settings as the current `harness-cli-env`
+
+Comments on this approach are welcome, leave them in the issues area of github.
