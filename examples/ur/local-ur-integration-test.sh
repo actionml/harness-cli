@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 echo
-echo "Usage: ur-integration-test.sh [harness-url] [harness-port]"
+echo "Usage: local-ur-integration-test.sh [harness-url] [harness-port]"
 echo "run from harness-cli/, assumes http"
 echo "export HARNESS_CLIENT_USER_ID and HARNESS_CLIENT_USER_SECRET before running against"
 echo "Harness with TLS and Auth. Change harness-cli-env to point to target a harness server"
@@ -37,7 +37,7 @@ echo $host_url
 diffs_and_errors_file=diffs_and_errors.txt
 # for real CLI test: engine=test_ur_nav_hinting
 engine=test_ur
-engine_json=examples/ur/test_ur_mobile_device.json
+engine_json=examples/ur/local_test_ur_mobile_device.json
 test_queries=examples/ur/test-ur-mobile-device-queries.sh
 user_events=examples/ur/sample-mobile-device-ur-data.csv
 actual_query_results=actual_ur_results.out
@@ -79,12 +79,16 @@ python3 examples/ur/import_mobile_device_ur_data.py --input_file ${user_events} 
 echo
 echo "Training a new model--THIS WILL TAKE SOME TIME (30 SECONDS?)"
 echo
+read -n1 -r -p "Press a key to start clustered training..." key
+
 harness-cli train $engine
-sleep $training_sleep_seconds # wait for training to complete
+#sleep $training_sleep_seconds # wait for training to complete
 
 echo
 echo "Sending UR queries"
 echo
+read -n1 -r -p "Press a key to send queries..." key
+
 ./${test_queries} ${host_url} > ${actual_query_results}
 #END
 : <<'END' # block comment beginning look for END

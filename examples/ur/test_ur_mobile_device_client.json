@@ -4,8 +4,8 @@
   "sparkConf": {
     "master": "spark://spark-api:7077",
     "spark.submit.deployMode": "client",
-    "spark.driver-memory": "5g",
-    "spark.executor-memory": "5g",
+    "spark.driver.memory": "4g",
+    "spark.executor.memory": "4g",
     "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
     "spark.kryo.registrator": "org.apache.mahout.sparkbindings.io.MahoutKryoRegistrator",
     "spark.kryo.referenceTracking": "false",

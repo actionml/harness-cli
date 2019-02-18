@@ -13,6 +13,7 @@ if [ -z "$RESOURCE_TYPE" ] ; then
   status_line "HARNESS_CLI_SSL_ENABLED" "${HARNESS_CLI_SSL_ENABLED}"
   status_line "HARNESS_CLI_AUTH_ENABLED" "${HARNESS_CLI_AUTH_ENABLED}"
   status_line "HARNESS_SERVER_ADDRESS" "${HARNESS_SERVER_ADDRESS}"
+  status_line "HARNESS_SERVER_PORT" "${HARNESS_SERVER_PORT}"
   echo -e "${line}${NC}"
 
   # output status
