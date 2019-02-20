@@ -103,3 +103,27 @@ iPad Pro,$set,countries:United States:Estados Unidos Mexicanos
 Pixel Slate,$set,countries:United States:Canada
 Galaxy 8,$set,countries:United States
 Surface Pro,$set,countries:United States:Canada
+u1,purchase,iPhone Case
+u1,purchase, AirPods
+U 2,purchase,USB-C
+u-3,purchase,Sleeve
+u-4,purchase,USB-C Ear Buds
+u-4,purchase,USB-C
+u1,view,Orders
+u1,view,Past Orders
+U 2,view,Orders
+U 2,view,Accessories
+u-3,view,Accessories
+u-4,view,Orders
+u-4,view,Phones
+u-4,view,Clothing
+u5,view,Clothing
+u1,category-pref,Toys
+u1,category-pref,Videos
+u1,category-pref,Electronics
+U 2,category-pref,Toys
+U 2,category-pref,Electronics
+u-3,category-pref,Videos
+u-4,category-pref,Videos
+u-4,category-pref,Games
+u5,category-pref,Games
