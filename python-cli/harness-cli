@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-. "$(cd "`dirname "$0"`"; pwd)/common.sh"
+. "$(cd "`dirname "$0"`"; pwd)/common-functions.sh"
+. "$(cd "`dirname "$0"`"; pwd)/common-env.sh"
 
 command="$1"
 shift
