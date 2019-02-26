@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. "$(cd "`dirname "$0"`"; pwd)/common.sh"
+. "$(cd "`dirname "$0"`"; pwd)/common-functions.sh"
 
 case "$1" in
     #c) ENGINE_CONFIG=$2
