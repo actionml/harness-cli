@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-. "$(cd "`dirname "$0"`"; pwd)/common.sh"
+. "$(cd "`dirname "$0"`"; pwd)/common-functions.sh"
 
 ROLE_SET=$1
 ENGINE_ID=$2
