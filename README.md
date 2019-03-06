@@ -1,24 +1,40 @@
-# The Harness CLI
+# The Harness CLI v0.2.0
 
-The Harness Command Line Interface uses a connection to a running Harness Server to do administrative tasks. 
+The Harness Command Line Interface uses a connection to a running Harness Server to do administrative tasks.
 
-**Until we deprecate and remove the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will go back to `harness status` etc**
+## **SEVERAL IMPORTANT NOTES** 
 
-**Note:**This CLI cannot be used to start or stop Harness, use the integrates cli to do this.
+ - **Until we deprecate and remove** the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will go back to `harness status` etc
+ - This CLI **cannot be used to start or stop** Harness, use the integrates cli to do this. `harness start` and `harness stop` should still work.
+ - You must add the `harness-cli` script to your PATH and to be safe it should be before the embedded Harness CLI. 
+
+These restrictions will be removed in future version of this project.
 
 ## Requirements
 
- - Python 3
+ - Python 3: Install so that it is executed with `python3` NOT `python`
  - A running Harness Server
- - Linux or macOS (other 'nix versions may work too)
+ - Linux, macOS, or other 'nix version
 
 ## Setup
 
-If you are running Harness locally on `http://localhost:9090` you can just add the the path to `harness-client-cli/python-cli` to your `$PATH` in `~/.profile` or `~/.bashrc` or wherever your OS requires, no other config is required.
+To get the project do a git pull from the `develop` branch of this repo: https://github.com/actionml/harness-cli.git
 
-To use this harness cli on a remote harness server make the correct changes to `harness-cli-env` or in the env, which overrides `harness-cli-env`
+Set your PATH env variable to point to the `harness-cli/python-cli` directory of this project **AND** make sure it is before the embedded CLI in `harness/dist/bin` or wherever you install the CLI that comes with the Harness repo.
+
+### Localhost
+
+If you are running Harness locally on `http://localhost:9090` no other config is required. Once Harness is started, run `harness-cli status` to see where the cli is pointed and to get connection status.
+
+### Remote Harness
+
+To use this harness cli on a remote harness server make the correct changes to `python-cli/harness-cli-env` or in the shell's env, which overrides `harness-cli-env`.
 
 For the simple case, just change `HARNESS_SERVER_ADDRESS` and `HARNESS_SERVER_PORT` in the setting below.
+
+### Full Settings
+
+These should allow full control of the CLI but the Auth-Server commands involving creating permissions, users, etc are not tested except in the embedded CLI.
 
 ```
 # harness cli environment file (sourced by scripts)
@@ -58,6 +74,10 @@ export HARNESS_CLI_AUTH_ENABLED=${HARNESS_CLI_AUTH_ENABLED:-false}
 
 ```
 
+Notice that `HARNESS_CLI_HOME` should not be set since it is calculated internally.
+
+**Deprecation Warning:** This env based configuration will eventually be replaced with a different scheme using YAML files. Before all upgrades consult this README.
+
 ## Help
 
 In a terminal shell type `harness-cli` to get help.
@@ -68,20 +88,24 @@ The examples directory comes with some tests for the Universal Recommender that 
 
 To use this setup with integration tests make the changes to the cli above then make sure the engine's JSON config used in the test has changes that reflect the harness installation's internal addressing for Elasticsearch and Spark. Check the engine's config `sparkConf` section for:
 
- -  `"master": "spark://some-spark-master:7077"` This shoudl point to the correct Spark master, or use `"local"` to use the Spark build-in to Harness
- -  `"es.nodes": "some-es-node-1,some-es-node2"` These shoudl be the IPs or DNS names of the ES nodes in the installation
+ -  `"master": "spark:<//some-spark-master>:7077"` This should point to the correct Spark master, or use `"local"` to use the Spark build-in to Harness
+ -  `"es.nodes": "<some-es-node-1>,<some-es-node2>"` These should be the IPs or DNS names of the ES nodes in the installation, comma separated with no spaces, quotes or < > characters.
 
 Run the test with new params for the remote installation of harness like this:
 
- - `cd harness-cli/`
- - `./examples/ur/ur-integration-test.sh address-of-harness port-of-harness`
+ - `./examples/ur/ur-integration-test.sh <address-of-harness> <port-of-harness>`
+ - The parameters default to `localhost` and `9090`
 
 Note: Tests do not currently work with https.
  
-The test will pause to allow training to finish, then again for permission to send queries. At the end it will compare actual results to expected ones and exit with 0 if the tests pass or 1 if they do not.
+The test will pause to allow hand start of training and finishing training to start queries. At the end it will compare actual results to expected ones and exit with 0 if the tests pass or 1 if they do not.
+
+**Deprecation Warning:** The tests are a work in progress so expect changes as they are refactored. Consult this README before any upgrade.
 
 # Roadmap
 
 This will be converted completely to Python and will target many possible configs pointing to different harness servers. It will do this in a similar way to how git works by searching back from the current directory to find a `.harness` directory with a `config.yml` file. This will allow working directories to point to different instances. The `config.yml` file will have similar settings as the current `harness-cli-env`
 
 Comments on this approach are welcome, leave them in the issues area of github.
+
+
