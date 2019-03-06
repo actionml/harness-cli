@@ -2,25 +2,33 @@
 
 The Harness Command Line Interface uses a connection to a running Harness Server to do administrative tasks.
 
-## **SEVERAL IMPORTANT NOTES** 
+## **PLEASE READ THESE NOTES** 
 
  - **Until we deprecate and remove** the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will go back to `harness status` etc
  - This CLI **cannot be used to start or stop** Harness, use the integrates cli to do this. `harness start` and `harness stop` should still work.
  - You must add the `harness-cli` script to your PATH and to be safe it should be before the embedded Harness CLI. 
+ - **The Harness Python SDK is now included**: You can build and install the SDK as shown in setup.
 
 These restrictions will be removed in future version of this project.
 
 ## Requirements
 
- - Python 3: Install so that it is executed with `python3` NOT `python`
+ - Python 3: Install so that it is executed with `python3` NOT `python`. Check with `which python3` or `python3 -version`
  - A running Harness Server
  - Linux, macOS, or other 'nix version
 
 ## Setup
 
-To get the project do a git pull from the `develop` branch of this repo: https://github.com/actionml/harness-cli.git
+To get the project do a git pull from the `develop` branch of this repo: https://github.com/actionml/harness-cli.git. The latest WIP is in `feature/cli-refactor`
 
 Set your PATH env variable to point to the `harness-cli/python-cli` directory of this project **AND** make sure it is before the embedded CLI in `harness/dist/bin` or wherever you install the CLI that comes with the Harness repo.
+
+### Install the Harness Python SDK
+
+ - `cd harness-cli/python-sdk`
+ - `python3 setup.py install`
+
+This will put the SDK in a place any python program should be able to access it. and this is important because the Harness Python CLI uses the SDK.
 
 ### Localhost
 
