@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 echo
-echo "Usage: local-ur-integration-test.sh [harness-url] [harness-port]"
+echo "Usage: aio-ur-integration-test.sh [harness-url] [harness-port]"
 echo "run from harness-cli/, assumes http"
 echo "export HARNESS_CLIENT_USER_ID and HARNESS_CLIENT_USER_SECRET before running against"
 echo "Harness with TLS and Auth. Change harness-cli-env to point to target a harness server"

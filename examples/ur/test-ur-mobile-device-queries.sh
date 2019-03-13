@@ -21,6 +21,12 @@ echo
 
 curl -H "Content-Type: application/json" -d '
 {
+  "user": "non-existent user"
+}' $host_url/engines/test_ur/queries
+echo
+
+curl -H "Content-Type: application/json" -d '
+{
   "user": "u1"
 }' $host_url/engines/test_ur/queries
 echo
@@ -281,6 +287,12 @@ echo
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XS"
+}' $host_url/engines/test_ur/queries
+echo
+
+curl -H "Content-Type: application/json" -d '
+{
+  "item": "non-existent item"
 }' $host_url/engines/test_ur/queries
 echo
 

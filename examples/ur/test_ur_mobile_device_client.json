@@ -2,7 +2,7 @@
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
   "sparkConf": {
-    "master": "spark://spark-api:7077",
+    "master": "spark://ip-172-31-55-98.ec2.internal:7077",
     "spark.submit.deployMode": "client",
     "spark.driver.memory": "4g",
     "spark.executor.memory": "4g",
@@ -12,8 +12,8 @@
     "spark.kryoserializer.buffer": "300m",
     "es.index.auto.create": "true",
     "spark.es.index.auto.create": "true",
-    "es.nodes": "elasticsearch-client",
-    "spark.es.nodes": "elasticsearch-client",
+    "es.nodes": "ip-172-31-49-150.ec2.internal",
+    "spark.es.nodes": "ip-172-31-49-150.ec2.internal",
     "es.nodes.wan.only": "true",
     "spark.es.nodes.wan.only": "true"
   },

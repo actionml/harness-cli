@@ -7,7 +7,7 @@ The Harness Command Line Interface uses a connection to a running Harness Server
  - **Until we deprecate and remove** the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will go back to `harness status` etc
  - This CLI **cannot be used to start or stop** Harness, use the integrates cli to do this. `harness start` and `harness stop` should still work.
  - You must add the `harness-cli` script to your PATH and to be safe it should be before the embedded Harness CLI. 
- - **The Harness Python SDK is now included**: You can build and install the SDK as shown in setup.
+ - **The Harness Python SDK is now included**: You will need to install the Harness Python SDK as well as dependent packages as shown in Setup.
 
 These restrictions will be removed in future version of this project.
 
@@ -24,6 +24,20 @@ To get the project do a git pull from the `develop` branch of this repo: https:/
 Set your PATH env variable to point to the `harness-cli/python-cli` directory of this project **AND** make sure it is before the embedded CLI in `harness/dist/bin` or wherever you install the CLI that comes with the Harness repo.
 
 ### Install the Harness Python SDK
+
+Depending on what OS and version of python3 you may need to install several packages from PyPI (the Python Package Index). For this you must first install `python3` and `pip3`
+
+For Ubuntu 16.04+
+
+ - `sudo apt-get install python3 python3-pip`
+
+Then with pip3 install:
+
+ - `pip3 install pytz`
+ - `pip3 install datetime`
+ - `pip3 install argparse`
+
+Then install the Harness Python Client SDK:
 
  - `cd harness-cli/python-sdk`
  - `python3 setup.py install`
