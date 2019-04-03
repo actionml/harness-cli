@@ -37,7 +37,7 @@ echo $host_url
 diffs_and_errors_file=diffs_and_errors.txt
 # for real CLI test: engine=test_ur_nav_hinting
 engine=test_ur
-engine_json=examples/ur/aio_test_ur_mobile_device.json
+engine_json=examples/ur/localhost_test_ur_mobile_device.json
 test_queries=examples/ur/test-ur-mobile-device-queries.sh
 user_events=examples/ur/sample-mobile-device-ur-data.csv
 actual_query_results=actual_ur_results.out
@@ -79,24 +79,25 @@ python3 examples/ur/import_mobile_device_ur_data.py --input_file ${user_events} 
 echo
 echo "Training a new model--THIS WILL TAKE SOME TIME (30 SECONDS?)"
 echo
-read -n1 -r -p "Press a key to start clustered training..." key
+#read -n1 -r -p "Press a key to start clustered training..." key
 
 harness-cli train $engine
-#sleep $training_sleep_seconds # wait for training to complete
+sleep $training_sleep_seconds # wait for training to complete
 
 echo
 echo "Sending UR queries"
 echo
-read -n1 -r -p "Press a key to send queries..." key
+#read -n1 -r -p "Press a key to send queries..." key
 
 ./${test_queries} ${host_url} > ${actual_query_results}
+exit
 #END
-: <<'END' # block comment beginning look for END
+#: <<'END' # block comment beginning look for END
 
 echo
 echo "---------------------- Testing Event Aliases -------------------------------------------------------------------"
 
-engine_aliases_json=examples/ur/test_ur_event_aliases.json
+engine_aliases_json=examples/ur/localhost_test_ur_mobile_aliases.json
 user_events_aliases=examples/ur/sample-event-alias-ur-data.csv
 actual_query_results_aliases=actual_ur_aliases_results.out
 
@@ -128,7 +129,7 @@ echo "---------------------- Testing Queries Filtered by Dates -----------------
 
 #: <<'END' # block comment beginning look for END
 
-engine_dates_json=examples/ur/test_ur_mobile_device_dates.json
+engine_dates_json=examples/ur/localhost_test_ur_mobile_device_dates.json
 user_events_dates=examples/ur/sample-mobile-device-ur-data.csv
 actual_query_results_dates=actual_ur_dates_results.out
 expected_test_results_dates=examples/ur/expected-ur-date-results.txt
@@ -157,19 +158,22 @@ echo "Sending UR queries"
 echo
 
 ./${test_date_queries} ${host_url} > ${actual_query_results_dates}
-END
+#END
 
 # echo "---------------------- Below there should be no differences reported -------------------------------------------"
 set +e # ignore trivial errors like no grep match
 
 rm -f ${diffs_and_errors_file}
 
+echo "default" >> ${diffs_and_errors_file}
 diff ${actual_query_results} ${expected_test_results} | grep "result" >> ${diffs_and_errors_file}
 cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file}
-#diff ${actual_query_results_aliases} ${expected_test_results} | grep "result" >> ${diffs_and_errors_file}
-#cat ${actual_query_results_aliases} | grep "error"  >> ${diffs_and_errors_file}
-#diff ${actual_query_results_dates} ${expected_test_results_dates} | grep "result"  >> ${diffs_and_errors_file}
-#cat ${actual_query_results_dates} | grep "error" >> ${diffs_and_errors_file}
+echo "aliases" >> ${diffs_and_errors_file}
+diff ${actual_query_results_aliases} ${expected_test_results} | grep "result" >> ${diffs_and_errors_file}
+cat ${actual_query_results_aliases} | grep "error"  >> ${diffs_and_errors_file}
+echo "date filters" >> ${diffs_and_errors_file}
+diff ${actual_query_results_dates} ${expected_test_results_dates} | grep "result"  >> ${diffs_and_errors_file}
+cat ${actual_query_results_dates} | grep "error" >> ${diffs_and_errors_file}
 
 
 if [ -s ${diffs_and_errors_file} ]
