@@ -1,4 +1,4 @@
-import harness
+hc import harness
 import os
 
 if __name__ == '__main__':

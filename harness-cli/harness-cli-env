@@ -2,11 +2,10 @@
 
 # Harness CLI config, should work as-is unless you are using SSL or connecting to a remote Harness Server
 export HARNESS_SERVER_ADDRESS=${HARNESS_SERVER_ADDRESS:-localhost}
+#export HARNESS_SERVER_ADDRESS=gt
+#export HARNESS_SERVER_ADDRESS=tbs
+#export HARNESS_SERVER_ADDRESS=172.31.61.112
 export HARNESS_SERVER_PORT=${HARNESS_SERVER_PORT:-9090}
-
-# Java and Python client SDKs use the following for TLS/SSL, not used by the server
-# the file provided works with localhost, create your own for some other IP address
-export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.pem}
 
 # =============================================================
 # Only change to enable TLS/SSL
@@ -15,9 +14,8 @@ export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.
 # export HARNESS_CLI_SSL_ENABLED=true # to enable TLS/SSL using the rest below for "localhost" keys passwords and certs
 export HARNESS_CLI_SSL_ENABLED=false
 
-# Harness TLS/SSL server support. A file needs to be provided even if TLS is not used, one is supplied for "localhost"
-#export HARNESS_KEYSTORE_PASSWORD=${HARNESS_KEYSTORE_PASSWORD:-changeit}
-#export HARNESS_KEYSTORE_PATH=${HARNESS_KEYSTORE_PATH:-$HARNESS_CLI_HOME/conf/harness.jks}
+# the file provided works with localhost, create your own for some other IP address
+export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.pem}
 
 # =============================================================
 # Only used for Authentication
