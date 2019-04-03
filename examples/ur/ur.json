@@ -3,8 +3,8 @@
   "engineFactory": "com.actionml.engines.ur.UREngine",
   "sparkConf": {
     "master": "local",
-    "spark.driver-memory": "4g",
-    "spark.executor-memory": "4g"
+    "spark.driver.memory": "4g",
+    "spark.executor.memory": "4g"
   },
   "algorithm": {
     "indicators": [
