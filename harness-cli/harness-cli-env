@@ -13,7 +13,7 @@ export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.
 # =============================================================
 
 # export HARNESS_CLI_SSL_ENABLED=true # to enable TLS/SSL using the rest below for "localhost" keys passwords and certs
-export HARNESS_CLI_SSL_ENABLED=false
+export HARNESS_CLI_SSL_ENABLED=${HARNESS_CLI_SSL_ENABLED:-false}
 
 # the file provided works with localhost, create your own for some other IP address
 export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.pem}
