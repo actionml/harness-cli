@@ -215,7 +215,7 @@ class HarnessHttpConnection(object):
     def __init__(self, host, https=False, timeout=5):
         self.access_token = None
         if https:  # https connection
-            ca_file = os.getenv("HARNESS_SERVER_CERT_PATH", "harness.pem")
+            ca_file = os.getenv("HARNESS_CLI_CERT_PATH", "harness.pem")
             ssl_context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
             ssl_context.load_verify_locations(ca_file)
             self._connection = httplib.HTTPSConnection(host, timeout=timeout, context=ssl_context)
@@ -342,10 +342,10 @@ def connection_worker(host, request_queue, https=False, timeout=5, loop=True):
       loop: This worker function stays in a loop waiting for request
         For testing purpose only. should always be set to True.
         :param loop:
-        :param timeout: 
-        :param request_queue: 
-        :param https: 
-        :param host:  
+        :param timeout:
+        :param request_queue:
+        :param https:
+        :param host:
     """
 
     connect = HarnessHttpConnection(host, https, timeout)
