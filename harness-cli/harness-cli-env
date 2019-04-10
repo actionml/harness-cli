@@ -24,6 +24,7 @@ export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.
 # Harness Auth-Server setup
 # export HARNESS_CLI_AUTH_ENABLED=true
 export HARNESS_CLI_AUTH_ENABLED=${HARNESS_CLI_AUTH_ENABLED:-false}
+export HARNESS_AUTH_URL=${HARNESS_AUTH_URL:-http://localhost:9099}
 # When auth is enabled there must be an admin user-id set so create one before turning on Auth
 # Both the Harness server and the Python CLI need this env var when using Auth
 export ADMIN_USER_ID=${ADMIN_USER_ID:-some-user-id}
