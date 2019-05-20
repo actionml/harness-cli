@@ -1,15 +1,15 @@
-# The Harness CLI v0.2.0
+# The Harness CLI v0.4.0
 
 The Harness Command Line Interface uses a connection to a running Harness Server to do administrative tasks.
 
-## **PLEASE READ THESE NOTES** 
+## Deprecation Notes 
 
- - **Until we deprecate and remove** the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will go back to `harness status` etc
- - This CLI **cannot be used to start or stop** Harness, use the integrates cli to do this. `harness start` and `harness stop` should still work.
+ - **This CLI will replace** the one embedded in Harness. This will happen in Harness-0.5.0-SNAPSHOT. Until we deprecate and remove the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will become`harnessctl status` etc.
+ - This CLI **cannot be used to start or stop** Harness, use the integrated cli to do this. `harness start` and `harness stop` should work.
  - You must add the `harness-cli` script to your PATH and to be safe it should be before the embedded Harness CLI. 
  - **The Harness Python SDK is now included**: You will need to install the Harness Python SDK as well as dependent packages as shown in Setup.
 
-These restrictions will be removed in future version of this project.
+These restrictions will be removed in harness-0.5.0-SNAPSHOT
 
 ## Requirements
 
