@@ -52,7 +52,7 @@ harness_running() {
   if [ "$1" = "-v" ]; then
     "${HARNESS_CLI_HOME}"/commands.py status "${USER_ARGS}"
   else
-    "${HARNESS_CLI_HOME}"/commands.py status "${USER_ARGS}" &> /dev/null
+    "${HARNESS_CLI_HOME}"/commands.py status ${USER_ARGS} &> /dev/null
   fi
 }
 
