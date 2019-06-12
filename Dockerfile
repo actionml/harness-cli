@@ -1,3 +1,7 @@
+# does not work properly
+# bugs:
+#  1) the harness-cli script is not executable, is not in the executable path
+
 FROM ubuntu:cosmic
 COPY . /harness-cli
 RUN apt update && \
