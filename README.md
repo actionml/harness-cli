@@ -1,15 +1,14 @@
-# The Harness CLI v0.4.0
+# The Harness Control Client 
+### **Version 0.4.0, for Harness 0.4.0**
 
-The Harness Command Line Interface uses a connection to a running Harness Server to do administrative tasks.
+The Harness Command Line Interface uses a connection to a running Harness Server to perform administrative tasks. Out of the box it is configured to communicate with http://localhost:9090 but a simple change will point it to any Harness server.
 
 ## Deprecation Notes 
 
- - **This CLI will replace** the one embedded in Harness. This will happen in Harness-0.5.0-SNAPSHOT. Until we deprecate and remove the integrated CLI this one will coexist and perform the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will become`harnessctl status` etc.
+ - **This CLI duplicates and replaces** the one integrated in Harness 0.4.0. The integrated CLI will be removed in Harness-0.5.0-SNAPSHOT and replaced by this one. Until we deprecate and remove the integrated CLI this one will coexist and performs the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will become`harness-cli status` etc.
  - This CLI **cannot be used to start or stop** Harness, use the integrated cli to do this. `harness start` and `harness stop` should work.
- - You must add the `harness-cli` script to your PATH and to be safe it should be before the embedded Harness CLI. 
- - **The Harness Python SDK is now included**: You will need to install the Harness Python SDK as well as dependent packages as shown in Setup.
-
-These restrictions will be removed in harness-0.5.0-SNAPSHOT
+ - You must add the `harness-cli` script to your PATH and to be safe it should be before the integrated CLI. 
+ - **The Harness Python SDK is now included** in this project: You will need to install the Harness Python SDK as well as dependent packages as shown in Setup below.
 
 ## Requirements
 
@@ -50,7 +49,7 @@ If you are running Harness locally on `http://localhost:9090` no other config is
 
 ### Remote Harness
 
-To use this harness cli on a remote harness server make the correct changes to `python-cli/harness-cli-env` or in the shell's env, which overrides `harness-cli-env`.
+To use this harness-cli on a remote harness server make the correct changes to `python-cli/harness-cli-env` or in the shell's env, which overrides `harness-cli-env`.
 
 For the simple case, just change `HARNESS_SERVER_ADDRESS` and `HARNESS_SERVER_PORT` in the setting below.
 
@@ -59,9 +58,9 @@ For the simple case, just change `HARNESS_SERVER_ADDRESS` and `HARNESS_SERVER_PO
 These should allow full control of the CLI but the Auth-Server commands involving creating permissions, users, etc are not tested except in the embedded CLI.
 
 ```
-# harness cli environment file (sourced by scripts)
+# harness-cli environment file (sourced by scripts)
 
-# Harness CLI config, should work as-is unless you are using SSL or connecting to a remote Harness Server
+# harness-cli config, should work as-is unless you are using SSL or connecting to a remote Harness Server
 export HARNESS_SERVER_ADDRESS=${HARNESS_SERVER_ADDRESS:-localhost}
 export HARNESS_SERVER_PORT=${HARNESS_SERVER_PORT:-9090}
 
@@ -124,10 +123,10 @@ The test will pause to allow hand start of training and finishing training to st
 
 **Deprecation Warning:** The tests are a work in progress so expect changes as they are refactored. Consult this README before any upgrade.
 
-# Roadmap
+# Versions
 
-This will be converted completely to Python and will target many possible configs pointing to different harness servers. It will do this in a similar way to how git works by searching back from the current directory to find a `.harness` directory with a `config.yml` file. This will allow working directories to point to different instances. The `config.yml` file will have similar settings as the current `harness-cli-env`
+The Harness-CLI follows the same version numbers as the Harness Server. If you build from source there will be a git tag in the master branch for every release after 0.4.0-RC1. For containers the image tags also follow Harness naming.
 
-Comments on this approach are welcome, leave them in the issues area of github.
+# Containers
 
-
+This project is published as `actionml/harness-cli:latest` for the most recent stable release. Alternate tags are available to pin version numbers. To get the most recent snapshot use the tag `develop`.

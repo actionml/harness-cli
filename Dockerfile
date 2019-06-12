@@ -7,6 +7,6 @@ RUN apt update && \
     pip3 install argparse && \
     cd /harness-cli/python-sdk/ && python3 setup.py install && \
     apt autoremove && \
-    rm -rf /harness-cli/python-sdk && \
+    #rm -rf /harness-cli/python-sdk && \
     rm -rf /var/apt/cache/*
 CMD ["tail", "-f", "/dev/null"]
