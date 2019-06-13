@@ -129,4 +129,42 @@ The Harness-CLI follows the same version numbers as the Harness Server. If you b
 
 # Containers
 
-This project is published as `actionml/harness-cli:latest` for the most recent stable release. Alternate tags are available to pin version numbers. To get the most recent snapshot use the tag `develop`.
+This project is published as `actionml/harness-cli:<tag>` where supported tags are:
+
+ - `latest`: most recent stable release, the most recent version of code tagged and pushed to the master branch of the git repo.
+ - `develop`: the most recent version of the work-in-progress. The most recent commit to the git `develop` branch. See the commit number tag to find the exact commit.
+ - `0.4.0-RC1`, `0.4.0`: release tags by version, which will match the tag in the master branch of the git repo.
+
+## Running the `harness-cli` Container
+
+Typically this container is used in a Kubernetes or docker-compose deployments with Harness itself (and other required services). In these cases the Harness server address is passed to this container by the orchestration layer.
+
+It is also convenient to run this container when controlling a remote Harness server or even during development where harness is running locally on `localhost:9090`. Here's how:
+
+```
+docker run -d -e HARNESS_EXTERNAL_ADDRESS=192.0.0.4 actionml/harness-cli:develop 
+```
+
+ - replace the tag with the version of the cli you want
+ - replace `HARNESS_EXTERNAL_ADDRESS` with the Harness address. For Harness running on `localhost` you must still provide the LAN address of the server, "localhost" will not be sufficient in most environments.
+
+Now find container id and start bash inside the running container
+
+```
+$ docker ps
+CONTAINER ID        IMAGE                         COMMAND                  CREATED             STATUS              PORTS                              NAMES
+f87d1403aca9        actionml/harness-cli:develop   "tail -f /dev/null"      30 minutes ago      Up 30 minutes                                          harness-docker-compose_harness-cli_1
+$ docker exec -it f87d1403aca9 bash
+root@f87d1403aca9:/# harness-cli status
+Harness CLI settings
+==================================================================
+HARNESS_CLI_HOME ........................ /harness-cli/harness-cli
+HARNESS_CLI_SSL_ENABLED .................................... false
+HARNESS_CLI_AUTH_ENABLED ................................... false
+HARNESS_SERVER_ADDRESS ................................. 192.0.0.4
+HARNESS_SERVER_PORT ......................................... 9090
+==================================================================
+Harness Server status: OK
+root@f87d1403aca9:/# 
+```
+

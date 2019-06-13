@@ -6,7 +6,7 @@ RESOURCE_TYPE=$1
 RESOURCE_ID=$2
 line="=================================================================="
 
-if [ -z "$RESOURCE_TYPE" ] ; then
+if [ -z "${RESOURCE_TYPE}" ] || [ "${RESOURCE_TYPE}" = "engines" ] || [ "${RESOURCE_TYPE}" = "users" ] ; then
   echo -e "${CYAN}Harness CLI settings${NC}"
   echo -e "${CYAN}${line}"
   status_line "HARNESS_CLI_HOME" "${HARNESS_CLI_HOME}"
@@ -22,31 +22,31 @@ if [ -z "$RESOURCE_TYPE" ] ; then
   echo -e "${color}Harness Server status: ${status}${NC}"
 
   harness_running || exit $?
-fi
 
-
-## engines
-#
-if [ "${RESOURCE_TYPE}" = "engines" ]; then
-  if [ -z ${RESOURCE_ID} ]; then
-    "${HARNESS_CLI_HOME}"/engines.py status --all_engines ${USER_ARGS} || exit $?
-  else
-    "${HARNESS_CLI_HOME}"/engines.py status -e "${RESOURCE_ID}" ${USER_ARGS} || exit $?
+  ## engines
+  #
+  if [ "${RESOURCE_TYPE}" = "engines" ]; then
+    if [ -z ${RESOURCE_ID} ]; then
+      "${HARNESS_CLI_HOME}"/engines.py status --all_engines ${USER_ARGS} || exit $?
+    else
+      "${HARNESS_CLI_HOME}"/engines.py status -e "${RESOURCE_ID}" ${USER_ARGS} || exit $?
+    fi
   fi
-fi
 
-
-## users
-#
-if [ "${RESOURCE_TYPE}" = "users" ]; then
-  if [ -z "${RESOURCE_ID}" ]; then
-    "${HARNESS_CLI_HOME}"/users.py status --all_users ${USER_ARGS} || exit $?
-  else
-    "${HARNESS_CLI_HOME}"/users.py status --user_id "${RESOURCE_ID}" ${USER_ARGS} || exit $?
+  ## users
+  #
+  if [ "${RESOURCE_TYPE}" = "users" ]; then
+    if [ -z "${RESOURCE_ID}" ]; then
+      "${HARNESS_CLI_HOME}"/users.py status --all_users ${USER_ARGS} || exit $?
+    else
+      "${HARNESS_CLI_HOME}"/users.py status --user_id "${RESOURCE_ID}" ${USER_ARGS} || exit $?
+    fi
   fi
+
+else # bad type.
+  echo -e "${RED}Bad resource type for status: ${RESOURCE_TYPE}${NC}"
+  exit 1
 fi
 
-## bad type.
-#
-echo "Bad resource type for status: ${RESOURCE_TYPE}"
-exit 1 # bad resource type for status
+
+
