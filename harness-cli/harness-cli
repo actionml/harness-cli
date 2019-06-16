@@ -19,5 +19,6 @@ case ${command} in
   grant) ${HARNESS_CLI_HOME}/harness-grant "$@" ;;
   revoke) ${HARNESS_CLI_HOME}/harness-revoke "$@" ;;
   train) ${HARNESS_CLI_HOME}/harness-engine-train "$@" ;;
+  cancel) ${HARNESS_CLI_HOME}/harness-engine-cancel-job "$@" ;;
   *) ${HARNESS_CLI_HOME}/harness-help ;;
 esac

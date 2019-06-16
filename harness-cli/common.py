@@ -13,6 +13,7 @@ parser.add_argument("--client_user_id", type=str, default=None)
 parser.add_argument("--client_user_secret_location", type=str, default=None)
 parser.add_argument("-r", "--role_set", type=str, default=None)
 parser.add_argument("-e", "--engineid", type=str, default=None)
+parser.add_argument("-j", "--jobid", type=str, default=None)
 parser.add_argument("--data_delete", "-d", dest='delete', default=False, action='store_true')
 parser.add_argument("--force", "-f", default=False, action='store_true')
 parser.add_argument("--import_path", "-i", type=str, default=None)
@@ -34,7 +35,6 @@ if os.getenv('HARNESS_CLI_SSL_ENABLED') == 'true':
     url = 'https://{}:{}'.format(harness_host, harness_port)
 else:
     url = 'http://{}:{}'.format(harness_host, harness_port)
-
 
 client_user_id = None
 client_user_secret = None

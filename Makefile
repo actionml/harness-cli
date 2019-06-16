@@ -12,7 +12,8 @@ DIST ?= ./dist
 # we should mirror the harness version number here
 VERSION := 0.4.0-RC1
 
-
+# For containers use the "dist" target
+# to install on a host OS, use the "install" target or "dist install"
 clean:
 	find $(HARNESS_CLI_ROOT) -name "__pycache__" -exec rm -r {} \; || true
 
@@ -34,4 +35,6 @@ build:
 	# add the hard-coded version number to the date
 	echo $(VERSION) >> $(DIST)/RELEASE
 
-
+# not needed for a container but used to re-install a new version on a host OS
+install: build
+	pip3 install $(DIST)/wheel/*.whl

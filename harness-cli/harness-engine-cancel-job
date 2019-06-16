@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+. "$(cd "`dirname "$0"`"; pwd)/common-functions.sh"
+
+ENGINE_ID=$1
+JOB_ID=$2
+
+if [ -z "$ENGINE_ID" ]; then
+    echo -e "${RED}Engine resource id not specified!${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli cancel <engine-id> <job-id>${NC}"
+    exit 1
+fi
+if [ -z "$JOB_ID" ]; then
+    echo -e "${RED}Job id not specified!${NC}"
+    echo -e "Expected command: ${CYAN}harness-cli cancel <engine-id> <job-id>${NC}"
+    exit 1
+fi
+
+PYTHON_ARGS="cancel -e $ENGINE_ID -j $JOB_ID ${USER_ARGS}"
+
+${HARNESS_CLI_HOME}/engines.py ${PYTHON_ARGS}
