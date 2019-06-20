@@ -165,16 +165,16 @@ set +e # ignore trivial errors like no grep match
 
 rm -f ${diffs_and_errors_file}
 
-echo "default" >> ${diffs_and_errors_file}
+#echo "default" >> ${diffs_and_errors_file}
 diff ${actual_query_results} ${expected_test_results} | grep "result" >> ${diffs_and_errors_file}
 cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file}
-echo "aliases" >> ${diffs_and_errors_file}
+#echo "aliases" >> ${diffs_and_errors_file}
 
-# disable alias queries, which seem to not match regular indicators
+# disable alias queries, which DO NOT match regular indicators
 #diff ${actual_query_results_aliases} ${expected_test_results} | grep "result" >> ${diffs_and_errors_file}
 #cat ${actual_query_results_aliases} | grep "error"  >> ${diffs_and_errors_file}
 
-echo "date filters" >> ${diffs_and_errors_file}
+#echo "date filters" >> ${diffs_and_errors_file}
 diff ${actual_query_results_dates} ${expected_test_results_dates} | grep "result"  >> ${diffs_and_errors_file}
 cat ${actual_query_results_dates} | grep "error" >> ${diffs_and_errors_file}
 

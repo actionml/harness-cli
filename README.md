@@ -18,9 +18,9 @@ The Harness Command Line Interface uses a connection to a running Harness Server
 
 ## Setup
 
-To get the project do a git pull from the `develop` branch of this repo: https://github.com/actionml/harness-cli.git. The latest WIP is in `feature/cli-refactor`
+To get the project do a git pull from the `develop` branch of this repo: https://github.com/actionml/harness-cli.git.
 
-Set your PATH env variable to point to the `harness-cli/python-cli` directory of this project **AND** make sure it is before the embedded CLI in `harness/dist/bin` or wherever you install the CLI that comes with the Harness repo.
+Set your PATH env variable to point to the `harness-cli/harness-cli` directory of this project **AND** make sure it is before the integrated (and deprecated) CLI in `harness/dist/bin` or wherever you install the CLI that comes with the Harness repo.
 
 ### Install the Harness Python SDK
 

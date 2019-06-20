@@ -27,7 +27,7 @@ echo -e "       For batch trained Engines this creates a model from previously a
 echo ""
 
 echo -e "   ${CYAN}harness-cli cancel <engine-id> <job-id${NC}"
-echo -e "       Cancels a train or import job"
+echo -e "       Cancels a train job. Import jobs cannot be canceled."
 echo ""
 
 echo -e "   ${CYAN}harness-cli status [[ engines | engines <engine-id>]]${NC}"
