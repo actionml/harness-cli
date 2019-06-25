@@ -53,9 +53,8 @@ jobs:
             "develop")
               echo $CIRCLE_BRANCH
               echo $CIRCLE_TAG
-              echo $CIRCLE_SHA1
               echo $(echo $CIRCLE_SHA1 | cut -c -7)
-              docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} ./
+              docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} -t actionml/harness-cli:$(echo $CIRCLE_SHA1 | cut -c -7)./
             ;;
             "ci")
               docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} ./
