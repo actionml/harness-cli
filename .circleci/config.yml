@@ -1,7 +1,4 @@
 version: 2.1
-machine:
-  environment:
-    SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
 
 jobs:
   build:
@@ -34,6 +31,9 @@ jobs:
   publish:
     docker:
     - image: docker:stable
+    environment:
+      SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
+
     steps:
     - checkout
     - setup_remote_docker
