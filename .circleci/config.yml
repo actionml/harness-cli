@@ -47,7 +47,10 @@ jobs:
               docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:latest ./
             ;;
             "develop")
-              docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} -t actionml/harness-cli:${CIRCLE_TAG} -t actionml/harness-cli:${CIRCLE_SHA1} ./
+              echo $CIRCLE_BRANCH
+              echo $CIRCLE_TAG
+              echo $CIRCLE_SHA1
+              docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} -t actionml/harness-cli:${CIRCLE_TAG} ./
             ;;
             "ci")
               docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} ./
