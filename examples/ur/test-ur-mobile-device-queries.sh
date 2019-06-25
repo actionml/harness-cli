@@ -58,15 +58,17 @@ echo
 echo
 echo "++++ Personalized with Business Rules ++++"
 echo "============= Inclusion      ============="
+echo "============= by categories  ============="
 echo
 
+echo "------------- all            -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2"
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- Tablets        -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -80,7 +82,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- Phones         -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -94,7 +96,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- Tablets or Phones -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -110,15 +112,17 @@ echo
 
 echo
 echo "============= Exclusion      ============="
+echo "============= by categories  ============="
 echo
 
+echo "------------- all            -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2"
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- No Tables     -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -132,7 +136,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- No Phones     -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -146,7 +150,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- No Tablets or Phones -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -162,15 +166,17 @@ echo
 
 echo
 echo "============= Boost          ============="
+echo "============= by categories  ============="
 echo
 
+echo "------------- all            -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2"
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- Highly Boost Tablets -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -184,7 +190,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- Highly Boost Phones -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -202,6 +208,7 @@ echo
 # todo: there results here look wrong, they should be ranked the same as no boost
 # but have an odd shuffled ranking, neither no-boost, not no-boost time boost
 # no item should have both of these categories so should only get one boost
+echo "------------- Highly Boost Tablets or Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -217,15 +224,16 @@ echo
 
 echo
 echo "============= Include A & B ============="
-echo
+echo "============= by categories  ============="
 
+echo "------------- all            -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2"
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- Must Include Tables & Apple -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -243,7 +251,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes
+echo "------------- Must Include Tables & Microsoft -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -262,6 +270,7 @@ curl -H "Content-Type: application/json" -d '
 echo
 
 # passes: "U 2" bought a Pixel Slate so no results
+echo "------------- Must Include Tables & Google -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",

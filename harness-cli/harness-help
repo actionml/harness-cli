@@ -4,8 +4,6 @@
 
 echo
 echo -e "${CYAN}Harness CLI Help${NC}"
-echo -e "${CYAN}Harness must be running and the address defined for these to work.${NC}"
-echo -e "${CYAN}Configure the CLI in ${HARNESS_CLI_HOME}/harness-cli-env${NC}"
 echo
 
 echo -e "   ${CYAN}harness-cli add </path/to/engine-config.json>${NC}"
@@ -28,9 +26,17 @@ echo -e "   ${CYAN}harness-cli train <engine-id>${NC}"
 echo -e "       For batch trained Engines this creates a model from previously accumulated data."
 echo ""
 
+echo -e "   ${CYAN}harness-cli cancel <engine-id> <job-id${NC}"
+echo -e "       Cancels a train job. Import jobs cannot be canceled."
+echo ""
+
 echo -e "   ${CYAN}harness-cli status [[ engines | engines <engine-id>]]${NC}"
 echo -e "       Prints a status message for the harness server, all engines, or the engine specified."
 echo ""
+
+echo
+echo -e "${CYAN}Harness Auth CLI Help${NC}"
+echo
 
 echo -e "   ${CYAN}harness-cli user-add [client <engine-id> | admin]${NC}"
 echo -e "       Returns a new user-id their secret. Grants the role's permissions."
@@ -38,12 +44,10 @@ echo ""
 
 echo -e "   ${CYAN}harness-cli user-delete <user-id>${NC}"
 echo -e "       Returns the user-id for the deleted user and deletes all attached permissions."
-echo -e "       Warning: not implemented yet."
 echo ""
 
 echo -e "   ${CYAN}harness-cli grant <user-id> [client <engine-id> | admin]${NC}"
 echo -e "       Returns true if permissions are added to the user-id"
-echo -e "       Warning: only one engine-id can be accessed by a \"client\" user currently."
 echo ""
 
 echo -e "   ${CYAN}harness-cli revoke <user-id> [client <engine-id>| admin]${NC}"
@@ -52,5 +56,4 @@ echo ""
 
 echo -e "   ${CYAN}harness-cli status users [<user-id>]${NC}"
 echo -e "       Prints the permissions for all users, or the user specified."
-echo -e "       Warning: not implemented yet."
 echo ""

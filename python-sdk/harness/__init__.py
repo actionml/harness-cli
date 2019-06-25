@@ -289,7 +289,7 @@ class EnginesClient(BaseClient):
     def async_get(self, engine_id):
         """
         Asynchronously get an engine info from Harness Server.
-        :param engine_id:
+        :param engine_id:c
         :returns: AsyncRequest object.
         """
         if engine_id is None:
@@ -369,6 +369,15 @@ class EnginesClient(BaseClient):
         ret = req.get_response()
         # print("Got response: {}".format(ret))
         return ret
+
+    def async_cancel_job(self, engine_id, job_id):
+        request = AsyncRequest("DELETE", self._add_segment(engine_id) + "/jobs/" + job_id)
+        request.set_response_handler(self._ok_response_handler)
+        self._connection.make_request(request)
+        return request
+
+    def cancel_job(self, engine_id, job_id):
+        return self.async_cancel_job(engine_id, job_id).get_response()
 
     def async_delete(self, engine_id):
         request = AsyncRequest("DELETE", self._add_segment(engine_id))

@@ -70,22 +70,22 @@ u-3,p2,Surface Pro
 u-4,p2,iPhone XR
 u-4,p2,iPhone 8
 u-4,p2,Galaxy 8
-u1,v2,Phones
-u1,v2,Mobile-acc
-U 2,v2,Phones
-U 2,v2,Tablets
-U 2,v2,Mobile-acc
-u-3,v2,Mobile-acc
-u-4,v2,Phones
-u-4,v2,Tablets
-u-4,v2,Soap
-u5,v2,Soap
-u1,p3,Galaxy 8
-u1,p3,Galaxy 8
-u1,p3,Galaxy 8
-u1,p3,Galaxy 8
-U 2,p3,iPhone XR
-U 2,p3,iPhone XR
+u1,v1,Phones
+u1,v1,Mobile-acc
+U 2,v1,Phones
+U 2,v1,Tablets
+U 2,v1,Mobile-acc
+u-3,v1,Mobile-acc
+u-4,v1,Phones
+u-4,v1,Tablets
+u-4,v1,Soap
+u5,v1,Soap
+u1,p2,Galaxy 8
+u1,p2,Galaxy 8
+u1,p2,Galaxy 8
+u1,p2,Galaxy 8
+U 2,p2,iPhone XR
+U 2,p2,iPhone XR
 u1,v2,Soap
 u1,v2,Soap
 u-3,v2,Mobile-acc
@@ -103,3 +103,27 @@ iPad Pro,$set,countries:United States:Estados Unidos Mexicanos
 Pixel Slate,$set,countries:United States:Canada
 Galaxy 8,$set,countries:United States
 Surface Pro,$set,countries:United States:Canada
+u1,p3,iPhone Case
+u1,p3, AirPods
+U 2,p3,USB-C
+u-3,p3,Sleeve
+u-4,p3,USB-C Ear Buds
+u-4,p3,USB-C
+u1,v2,Orders
+u1,v2,Past Orders
+U 2,v2,Orders
+U 2,v2,Accessories
+u-3,v2,Accessories
+u-4,v2,Orders
+u-4,v2,Phones
+u-4,v2,Clothing
+u5,v2,Clothing
+u1,category-pref,Toys
+u1,category-pref,Videos
+u1,category-pref,Electronics
+U 2,category-pref,Toys
+U 2,category-pref,Electronics
+u-3,category-pref,Videos
+u-4,category-pref,Videos
+u-4,category-pref,Games
+u5,category-pref,Games

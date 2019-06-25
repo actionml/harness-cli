@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-    - image: actionml/harness-cli:0.1
+    - image: actionml/harness-sdk:latest
       entrypoint: /entrypoint.sh
     environment:
     - SDK_VERBOSE: true
@@ -40,7 +40,7 @@ jobs:
         command: |
           echo -n ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
     - run:
-        name: Build rest-server docker image
+        name: Build harness-cli docker image
         command: |
           case "${CIRCLE_BRANCH}" in
             "master")
