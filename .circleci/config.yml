@@ -1,4 +1,8 @@
 version: 2.1
+machine:
+  environment:
+    SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
+
 jobs:
   build:
     docker:
@@ -47,9 +51,10 @@ jobs:
               docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:latest ./
             ;;
             "develop")
-              echo ${CIRCLE_BRANCH}
-              echo ${CIRCLE_TAG}
-              echo ${CIRCLE_SHA1}
+              echo $CIRCLE_BRANCH
+              echo $CIRCLE_TAG
+              echo ${CIRCLE_SHA1
+              echo $SHORT_GIT_HASH
               docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} ./
             ;;
             "ci")
