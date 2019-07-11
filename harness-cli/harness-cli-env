@@ -3,9 +3,23 @@
 # Harness CLI config, should work as-is unless you are using SSL or connecting to a remote Harness Server
 export HARNESS_SERVER_ADDRESS=${HARNESS_SERVER_ADDRESS:-localhost}
 export HARNESS_SERVER_PORT=${HARNESS_SERVER_PORT:-9090}
-# Java and Python client SDKs use the following for TLS/SSL, not used by the server
-# the file provided works with localhost, create your own for some other IP address
-export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.pem}
+export ELASTICSEARCH_REST_HOST=${ELASTICSEARCH_REST_HOST:-localhost}
+export ELASTICSEARCH_REST_PORT=${ELASTICSEARCH_REST_PORT:-9200}
+export ELASTICSEARCH_REST_PROTOCOL=${ELASTICSEARCH_REST_PROTOCOL:-http}
+
+# =============================================================
+# Needed for Engines that use Spark and Elasticsearch, like
+# the UR and URNavHinting
+# =============================================================
+
+# Address of Elasticsearch to be used in the Spark Job so the Spark to ES connection address
+# used in engine config as sparkConf.spark.es.nodes value
+export ELASTICSEARCH_MASTER=#ELASTICSEARCH_REST_PROTOCOL://$ELASTICSEARCH_REST_HOST:$ELASTICSEARCH_REST_PORT
+
+# address of Spark master used to launch Jobs
+# in engine config is the value for sparkConf.master
+# value should be "local" or something like "spark://some-address:7077"
+export SPARK_MASTER=${SPARK_MASTER:-local}
 
 # =============================================================
 # Only change to enable TLS/SSL

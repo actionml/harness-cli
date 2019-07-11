@@ -1,14 +1,13 @@
 {
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
+  "comment": "setup by default for hos OS installation",
   "sparkConf": {
     "es.index.auto.create": "true",
-    "es.nodes": "elasticsearch-client",
     "es.nodes.wan.only": "true",
-    "master": "spark://spark-api:7077",
+    "master": "local",
     "spark.driver.memory": "3g",
     "spark.es.index.auto.create": "true",
-    "spark.es.nodes": "elasticsearch-client",
     "spark.es.nodes.wan.only": "true",
     "spark.executor.memory": "3g",
     "spark.kryo.referenceTracking": "false",

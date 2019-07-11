@@ -1,6 +1,7 @@
 {
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
+  "comment": "setup by default for k8s",
   "sparkConf": {
     "es.index.auto.create": "true",
     "es.nodes": "elasticsearch-client",

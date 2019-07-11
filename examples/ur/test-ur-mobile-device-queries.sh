@@ -122,7 +122,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- No Tables     -------------"
+echo "------------- No Tablets     -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -233,7 +233,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- Must Include Tables & Apple -------------"
+echo "------------- Must Include Tablets & Apple -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -251,7 +251,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- Must Include Tables & Microsoft -------------"
+echo "------------- Must Include Tablets & Microsoft -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -270,7 +270,7 @@ curl -H "Content-Type: application/json" -d '
 echo
 
 # passes: "U 2" bought a Pixel Slate so no results
-echo "------------- Must Include Tables & Google -------------"
+echo "------------- Must Include Tablets & Google -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",

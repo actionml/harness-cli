@@ -9,6 +9,7 @@ echo
 
 if [ -z "$1" ] ; then
   training_sleep_seconds=30
+  sleep_seconds=1
   export HARNESS_SERVER_ADDRESS=localhost
   export HARNESS_SERVER_PORT=9090
   export host_url="http://localhost:9090"
@@ -67,9 +68,9 @@ echo "---------------------- Testing Simple Personalized Recs with Business Rule
 
 echo "Wipe the Engine clean of data and model first"
 harness-cli delete ${engine}
-#sleep $sleep_seconds
+sleep $sleep_seconds
 harness-cli add ${engine_json} || true
-#sleep $sleep_seconds
+sleep $sleep_seconds
 
 echo
 echo "Sending all personalization events"
@@ -103,9 +104,9 @@ actual_query_results_aliases=actual_ur_aliases_results.out
 
 echo "Wipe the Engine clean of data and model first"
 harness-cli delete ${engine}
-#sleep $sleep_seconds
+sleep $sleep_seconds
 harness-cli add ${engine_aliases_json} || true
-#sleep $sleep_seconds
+sleep $sleep_seconds
 
 echo
 echo "Sending all personalization events"
@@ -138,9 +139,9 @@ test_date_queries=examples/ur/test-ur-mobile-date-queries.sh
 
 echo "Wipe the Engine clean of data and model first"
 harness-cli delete ${engine}
-#sleep $sleep_seconds
+sleep $sleep_seconds
 harness-cli add ${engine_dates_json} || true
-#sleep $sleep_seconds
+sleep $sleep_seconds
 
 echo
 echo "Sending all personalization events with dates"
@@ -187,3 +188,4 @@ else
    echo "Tests pass."
    exit 0
 fi
+#END
