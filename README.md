@@ -165,6 +165,10 @@ HARNESS_SERVER_ADDRESS ................................. 192.0.0.4
 HARNESS_SERVER_PORT ......................................... 9090
 ==================================================================
 Harness Server status: OK
+root@f87d1403aca9:/# harness-cli status engines
+[]
 root@f87d1403aca9:/# 
 ```
+
+The "status" gives an "OK" if connections can be made, the rest of the info is client config. The "status engines" hits the DB to find any installed engines so if you have new Harness installation you will get an empty JSON array of Engine Instance info.
 
