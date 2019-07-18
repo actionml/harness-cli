@@ -22,15 +22,15 @@ echo
 
 #============ dateRange filter ============"
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  BEFORE=`date --date="today + 12 hours" --iso-8601=seconds`
-  AFTER=`date --date="6 hours ago" --iso-8601=seconds`
+  BEFORE=`date -u --date="today + 12 hours" --iso-8601=seconds`
+  AFTER=`date -u --date="6 hours ago" --iso-8601=seconds`
 else
   # changed as per PR https://github.com/actionml/universal-recommender/pull/49
   # BEFORE=`date -v +1d +"%Y-%m-%dT%H:%M:%SZ"`
   # AFTER=`date -v -1d +"%Y-%m-%dT%H:%M:%SZ"`
   #BEFORE=`date -v +1d -u +%FT%TZ`
-  BEFORE=`date -v +12H +%FT%TZ`
-  AFTER=`date -v -6H +%FT%TZ`
+  BEFORE=`date -u -v +12H +%FT%TZ`
+  AFTER=`date -u -v -6H +%FT%TZ`
 fi
 #echo "before: $BEFORE after: $AFTER"
 
