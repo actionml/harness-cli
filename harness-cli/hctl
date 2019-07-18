@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# alias for "harness-cli"
 harness-cli "$@"

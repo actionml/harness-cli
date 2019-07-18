@@ -3,11 +3,13 @@ set +e
 echo
 echo "Usage: simple-integration-test.sh"
 echo "run from harness-cli/, assumes http for the Harness REST endpoint"
+echo "Set HARNESS_SERVER_ADDRESS and HARNESS_SERVER_PORT before running"
+echo "if you want to use a non-localhost Harness"
 echo
 
-export HARNESS_SERVER_ADDRESS=localhost
-export HARNESS_SERVER_PORT=9090
-export host_url="http://localhost:9090"
+export HARNESS_SERVER_ADDRESS=${HARNESS_SERVER_ADDRESS:-localhost}
+export HARNESS_SERVER_PORT=${HARNESS_SERVER_PORT:-9090}
+export host_url="http://${HARNESS_SERVER_ADDRESS}:${HARNESS_SERVER_PORT}"
 
 if [ -z "$1" ] ; then
   training_sleep_seconds=30
