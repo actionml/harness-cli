@@ -11,21 +11,38 @@ export HARNESS_SERVER_ADDRESS=${HARNESS_SERVER_ADDRESS:-localhost}
 export HARNESS_SERVER_PORT=${HARNESS_SERVER_PORT:-9090}
 export host_url="http://${HARNESS_SERVER_ADDRESS}:${HARNESS_SERVER_PORT}"
 
-if [ -z "$1" ] ; then
-  training_sleep_seconds=30
-  sleep_seconds=1
-  DEPLOYMENT_STYLE="all-localhost"
-  engine_json=examples/ur/simple_test_ur_mobile_device_host_install.json
-else # if you pass any flag for style
-  training_sleep_seconds=120 # wait longer for remote machine
-  DEPLOYMENT_STYLE="k8s"
-  engine_json=examples/ur/simple_test_ur_mobile_device_k8s_install.json
-fi
 
-echo "Harness address: $HARNESS_SERVER_ADDRESS"
-echo "Harness port: $HARNESS_SERVER_PORT"
-echo "Full Harness URL: $host_url"
-echo "Deployment style: $DEPLOYMENT_STYLE"
+command="$1"
+shift
+
+case ${command} in
+  k8s)
+    training_sleep_seconds=120 # wait longer for remote machine
+    sleep_seconds=1
+    DEPLOYMENT_STYLE="k8s"
+    engine_json=examples/ur/simple_test_ur_mobile_device_k8s_install.json
+    ;;
+  dc)
+    training_sleep_seconds=40 # wait longer for remote machine
+    sleep_seconds=1
+    DEPLOYMENT_STYLE="dc"
+    engine_json=examples/ur/simple_test_ur_mobile_device_dc_install.json
+    ;;
+  *) # assume localhost if no style passed in
+    training_sleep_seconds=30
+    sleep_seconds=1
+    DEPLOYMENT_STYLE="all-localhost"
+    engine_json=examples/ur/simple_test_ur_mobile_device_host_install.json
+    ;;
+esac
+
+echo "============================================="
+echo "Settings used:"
+echo "    Harness address: $HARNESS_SERVER_ADDRESS"
+echo "    Harness port: $HARNESS_SERVER_PORT"
+echo "    Full Harness URL: $host_url"
+echo "    Deployment style: $DEPLOYMENT_STYLE"
+echo "============================================="
 
 # set harness-env to point to the correct server for executing these tests
 diffs_and_errors_file=diffs_and_errors.txt

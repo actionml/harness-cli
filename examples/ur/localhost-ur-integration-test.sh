@@ -17,6 +17,7 @@ if [ -z "$1" ] ; then
 else
   export host_url=http://${1}":"${2}
   training_sleep_seconds=90 # wait longer for remote machine
+  sleep_seconds=1
   export HARNESS_SERVER_ADDRESS=${1}
   port=$2
   export HARNESS_SERVER_PORT=${port:-9090}

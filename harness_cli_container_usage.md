@@ -35,7 +35,7 @@ To map Harness Server to the host's IP run the following:
 export KUBECONFIG=kubeconfig.yml # sets cluster config...
 kubectl get pods # get info from k8s above
 # note the harness pod ID
-kubectl port-forward --address 0.0.0.0 harness-pod-id 9090:9090
+kubectl port-forward --address 0.0.0.0 <harness-pod-id> 9090:9090
 ```
 
 This sets up the host's `localhost:9090` to connect to the k8s Harness. 
