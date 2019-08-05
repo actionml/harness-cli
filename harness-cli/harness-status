@@ -6,7 +6,7 @@ RESOURCE_TYPE=$1
 RESOURCE_ID=$2
 line="=================================================================="
 
-if [ -z "${RESOURCE_TYPE}" ] || [ "${RESOURCE_TYPE}" = "engines" ] || [ "${RESOURCE_TYPE}" = "users" ] ; then
+if [ -z "${RESOURCE_TYPE}" ] || [ "${RESOURCE_TYPE}" = "engines" ] || [ "${RESOURCE_TYPE}" = "users" ] || [ "${RESOURCE_TYPE}" = "system" ] ; then
   echo -e "${CYAN}Harness CLI v$(<$HARNESS_CLI_HOME/RELEASE) settings${NC}"
   echo -e "${CYAN}${line}"
   status_line "HARNESS_CLI_HOME" "${HARNESS_CLI_HOME}"
@@ -41,6 +41,12 @@ if [ -z "${RESOURCE_TYPE}" ] || [ "${RESOURCE_TYPE}" = "engines" ] || [ "${RESOU
     else
       "${HARNESS_CLI_HOME}"/users.py status --user_id "${RESOURCE_ID}" ${USER_ARGS} || exit $?
     fi
+  fi
+
+  ## system
+  #
+  if [ "${RESOURCE_TYPE}" = "system" ]; then
+    harness-system || exit $?
   fi
 
 else # bad type.

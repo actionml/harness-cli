@@ -6,9 +6,6 @@ COMMAND=$1
 line="=================================================================="
 
 if [ -z "${COMMAND}" ] ; then
-  harness-cli status
-  #harness_running || exit $?
-
   ## system for getting system info
   #
     "${HARNESS_CLI_HOME}"/system.py info ${USER_ARGS} || exit $?
