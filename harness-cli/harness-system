@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+. "$(cd "`dirname "$0"`"; pwd)/common-functions.sh"
+
+COMMAND=$1
+line="=================================================================="
+
+if [ -z "${COMMAND}" ] ; then
+  harness-cli status
+  #harness_running || exit $?
+
+  ## system for getting system info
+  #
+    "${HARNESS_CLI_HOME}"/system.py info ${USER_ARGS} || exit $?
+
+else # bad type.
+  echo -e "${RED}Bad resource type for status: ${RESOURCE_TYPE}${NC}"
+  exit 1
+fi
+
+
+

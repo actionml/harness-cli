@@ -31,7 +31,11 @@ echo -e "       Cancels a train job. Import jobs cannot be canceled."
 echo ""
 
 echo -e "   ${CYAN}harness-cli status [[ engines | engines <engine-id>]]${NC}"
-echo -e "       Prints a status message for the harness server, all engines, or the engine specified."
+echo -e "       Prints a status message for the Harness CLI, all engines, or the engine specified."
+echo ""
+
+echo -e "   ${CYAN}harness-cli system${NC}"
+echo -e "       Prints a message about build version numbers and other CLI and Server info."
 echo ""
 
 echo

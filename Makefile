@@ -10,7 +10,7 @@ DIST ?= ./dist
 # not sure where to get the version number so hard code?
 # the version number of the sdk is in the python code and not to be used as the cli version number
 # we should mirror the harness version number here
-VERSION := 0.4.0-RC1
+VERSION := 0.5.0-SNAPSHOT
 
 # For containers use the "dist" target
 # to install on a host OS, use the "install" target or "dist install"
@@ -34,6 +34,7 @@ build:
 	date > $(DIST)/RELEASE
 	# add the hard-coded version number to the date
 	echo $(VERSION) >> $(DIST)/RELEASE
+	echo $(VERSION) >> $(HARNESS_CLI_DIR)/RELEASE
 
 # not needed for a container but used to re-install a new version on a host OS
 install: build

@@ -7,7 +7,7 @@ RESOURCE_ID=$2
 line="=================================================================="
 
 if [ -z "${RESOURCE_TYPE}" ] || [ "${RESOURCE_TYPE}" = "engines" ] || [ "${RESOURCE_TYPE}" = "users" ] ; then
-  echo -e "${CYAN}Harness CLI settings${NC}"
+  echo -e "${CYAN}Harness CLI v$(<$HARNESS_CLI_HOME/RELEASE) settings${NC}"
   echo -e "${CYAN}${line}"
   status_line "HARNESS_CLI_HOME" "${HARNESS_CLI_HOME}"
   status_line "HARNESS_CLI_SSL_ENABLED" "${HARNESS_CLI_SSL_ENABLED}"

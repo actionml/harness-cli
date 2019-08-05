@@ -3,7 +3,7 @@ Provides easy-to-use functions for integrating
 Python applications with ActionML's REST API for the Harness Server.
 """
 
-__version__ = "0.3.0"
+__version__ = "0.5.0"
 
 # import packages
 import re
@@ -169,6 +169,25 @@ class BaseClient(object):
 
     def _ok_response_handler(self, response):
         return self._response_handler(httplib.OK, response)
+
+
+class SystemClient(BaseClient):
+    def __init__(self, url="http://localhost:9090", threads=1, qsize=0, timeout=5, user_id=None, user_secret=None):
+        self.path = "/system"
+        super(SystemClient, self).__init__(url, threads, qsize, timeout, user_id, user_secret)
+
+    def async_info(self):
+        """
+        Asynchronously get system info from Harness Server.
+        :returns: AsyncRequest object.
+        """
+        request = AsyncRequest("GET", self.path)
+        request.set_response_handler(self._ok_response_handler)
+        self._connection.make_request(request)
+        return request
+
+    def info(self):
+        return self.async_info().get_response()
 
 
 class EventsClient(BaseClient):
