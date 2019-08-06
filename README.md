@@ -1,5 +1,7 @@
+[![CircleCI](https://circleci.com/gh/actionml/harness-cli.svg?style=svg)](https://circleci.com/gh/actionml/harness-cli)
+
 # The Harness Control Client 
-### **Version 0.4.0, for Harness 0.4.0**
+### **Version 0.5.0, for Harness 0.5.0**
 
 The Harness Command Line Interface uses a connection to a running Harness Server to perform administrative tasks. Out of the box it is configured to communicate with http://localhost:9090 but a simple change will point it to any Harness server.
 
