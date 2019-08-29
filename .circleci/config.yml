@@ -56,6 +56,12 @@ jobs:
               # creates a short hash but cant figure out how to get into the tags below $(echo $CIRCLE_SHA1 | cut -c -7)
               docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} ./
             ;;
+            "devops")
+              echo $CIRCLE_BRANCH
+              echo $CIRCLE_TAG
+              # creates a short hash but cant figure out how to get into the tags below $(echo $CIRCLE_SHA1 | cut -c -7)
+              docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} ./
+            ;;
             "ci")
               docker image build -f Dockerfile --build-arg version=ci -t actionml/harness-cli:${CIRCLE_BRANCH} ./
             ;;
@@ -70,6 +76,9 @@ jobs:
               docker image push actionml/harness-cli:latest
             ;;
             "develop")
+              docker image push actionml/harness-cli:${CIRCLE_BRANCH}
+            ;;
+            "devops")
               docker image push actionml/harness-cli:${CIRCLE_BRANCH}
             ;;
             "ci")
