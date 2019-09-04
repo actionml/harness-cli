@@ -65,12 +65,14 @@ jobs:
             "devops")
               echo $CIRCLE_BRANCH
               echo $CIRCLE_TAG
-              echo $SHORT_GIT_HASH
+              # echo $SHORT_GIT_HASH
+              echo "Date - $DATE_BUILD"
+              echo "Date2 - ${DATE_BUILD}"
               # creates a short hash but cant figure out how to get into the tags below $(echo $CIRCLE_SHA1 | cut -c -7)
-              docker image build -f Dockerfile --build-arg version=ci --build-arg GIT_HASH=${SHORT_GIT_HASH} --build-arg DATE_BUILD=${DATE_BUILD} -t actionml/harness-cli:${CIRCLE_BRANCH} ./
+              docker image build -f Dockerfile --build-arg version=ci --build-arg GIT_HASH=${CIRCLE_SHA1} --build-arg DATE_BUILD=${DATE_BUILD} -t actionml/harness-cli:${CIRCLE_BRANCH} ./
             ;;
             "ci")
-              docker image build -f Dockerfile --build-arg version=ci --build-arg GIT_HASH=${SHORT_GIT_HASH} --build-arg DATE_BUILD=${DATE_BUILD} -t actionml/harness-cli:${CIRCLE_BRANCH} ./
+              docker image build -f Dockerfile --build-arg version=ci --build-arg GIT_HASH=${CIRCLE_SHA1} --build-arg DATE_BUILD=$DATE_BUILD -t actionml/harness-cli:${CIRCLE_BRANCH} ./
             ;;
             *)
             ;;
@@ -89,6 +91,8 @@ jobs:
               docker image push actionml/harness-cli:${CIRCLE_BRANCH}
               docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:${CIRCLE_SHA1}
               docker image push actionml/harness-cli:${CIRCLE_SHA1}
+              docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:$DATE_BUILD
+              docker image push actionml/harness-cli:$DATE_BUILD
               
             ;;
             "ci")
