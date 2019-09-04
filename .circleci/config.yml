@@ -32,8 +32,8 @@ jobs:
     docker:
     - image: docker:stable
     environment:
-      SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
-      DATE_BUILD: $(date +'%d-%m-%Y')
+    - SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
+    - DATE_BUILD: $(date +'%d-%m-%Y')
 
     steps:
     - checkout
@@ -60,6 +60,7 @@ jobs:
             "devops")
               echo $CIRCLE_BRANCH
               echo $CIRCLE_TAG
+              echo $SHORT_GIT_HASH
               # creates a short hash but cant figure out how to get into the tags below $(echo $CIRCLE_SHA1 | cut -c -7)
               docker image build -f Dockerfile --build-arg version=ci --build-arg GIT_HASH=${SHORT_GIT_HASH} --build-arg DATE_BUILD=${DATE_BUILD} -t actionml/harness-cli:${CIRCLE_BRANCH} ./
             ;;
