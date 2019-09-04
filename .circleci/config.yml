@@ -47,8 +47,10 @@ jobs:
     - run:
         name: Export var
         command: |
-          export SHORT_GIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7)
+          export SHORT_GIT_HASH=$(echo ${CIRCLE_SHA1} | cut -c -7)
           export DATE_BUILD=$(date +'%d-%m-%Y')
+          echo "HASH - $SHORT_GIT_HASH"
+          echo "Date - $DATE_BUILD"
     - run:
         name: Build harness-cli docker image
         command: |
