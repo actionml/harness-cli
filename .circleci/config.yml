@@ -31,9 +31,9 @@ jobs:
   publish:
     docker:
     - image: docker:stable
-    environment:
-    - SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
-    - DATE_BUILD: $(date +'%d-%m-%Y')
+    # environment:
+    # - SHORT_GIT_HASH: $(echo $CIRCLE_SHA1 | cut -c -7)
+    # - DATE_BUILD: $(date +'%d-%m-%Y')
 
     steps:
     - checkout
@@ -44,6 +44,11 @@ jobs:
         name: Docker login
         command: |
           echo -n ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
+    - run:
+        name: Export var
+        command: |
+          export SHORT_GIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7)
+          export DATE_BUILD=$(date +'%d-%m-%Y')
     - run:
         name: Build harness-cli docker image
         command: |
