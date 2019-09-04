@@ -47,9 +47,7 @@ jobs:
     - run:
         name: Export var
         command: |
-          export SHORT_GIT_HASH=$(echo ${CIRCLE_SHA1} | cut -c -7)
-          export DATE_BUILD=$(date +'%d-%m-%Y')
-          echo "HASH - $SHORT_GIT_HASH"
+          DATE_BUILD=$(date +'%d-%m-%Y')
           echo "Date - $DATE_BUILD"
     - run:
         name: Build harness-cli docker image
@@ -91,8 +89,6 @@ jobs:
               docker image push actionml/harness-cli:${CIRCLE_BRANCH}
               docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:${CIRCLE_SHA1}
               docker image push actionml/harness-cli:${CIRCLE_SHA1}
-              # docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:${DATE_BUILD}
-              # docker image push actionml/harness-cli:${DATE_BUILD}
               
             ;;
             "ci")
