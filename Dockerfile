@@ -3,6 +3,12 @@
 #  1) the harness-cli script is not executable, is not in the executable path
 
 FROM ubuntu:cosmic
+
+ARG GIT_HASH
+ARG DATE_BUILD
+ENV GIT_HASH=${GIT_HASH}
+ENV DATE_BUILD=${DATE_BUILD}
+
 COPY . /harness-cli
 ENV PATH=/harness-cli/harness-cli/:$PATH
 RUN apt update && \
