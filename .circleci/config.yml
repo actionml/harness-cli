@@ -89,10 +89,10 @@ jobs:
             ;;
             "devops")
               docker image push actionml/harness-cli:${CIRCLE_BRANCH}
-              docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:${SHORT_GIT_HASH}
-              docker image push actionml/harness-cli:${SHORT_GIT_HASH}
-              docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:${DATE_BUILD}
-              docker image push actionml/harness-cli:${DATE_BUILD}
+              docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:${CIRCLE_SHA1}
+              docker image push actionml/harness-cli:${CIRCLE_SHA1}
+              # docker tag actionml/harness-cli:${CIRCLE_BRANCH} actionml/harness-cli:${DATE_BUILD}
+              # docker image push actionml/harness-cli:${DATE_BUILD}
               
             ;;
             "ci")
