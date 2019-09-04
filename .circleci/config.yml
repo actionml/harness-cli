@@ -72,7 +72,7 @@ jobs:
               # echo $SHORT_GIT_HASH
               echo "Date - $DATE_BUILD"
               echo "Date2 - ${DATE_BUILD}"
-              echo "Hash - $SHORT_GIT_HASH
+              echo "Hash - $SHORT_GIT_HASH"
               # creates a short hash but cant figure out how to get into the tags below $(echo $CIRCLE_SHA1 | cut -c -7)
               docker image build -f Dockerfile --build-arg version=ci --build-arg GIT_HASH=${CIRCLE_SHA1} --build-arg DATE_BUILD=${DATE_BUILD} -t actionml/harness-cli:${CIRCLE_BRANCH} ./
             ;;
