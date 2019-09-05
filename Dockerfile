@@ -6,8 +6,10 @@ FROM ubuntu:cosmic
 
 ARG GIT_HASH
 ARG DATE_BUILD
+ARG BRANCH
 ENV GIT_HASH=${GIT_HASH}
 ENV DATE_BUILD=${DATE_BUILD}
+ENV BRANCH=${BRANCH}
 
 COPY . /harness-cli
 ENV PATH=/harness-cli/harness-cli/:$PATH
