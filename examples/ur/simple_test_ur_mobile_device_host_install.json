@@ -1,7 +1,7 @@
 {
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
-  "comment": "setup by default for hos OS installation",
+  "comment": "setup by default for host OS native installation",
   "sparkConf": {
     "es.index.auto.create": "true",
     "es.nodes.wan.only": "true",
@@ -27,6 +27,15 @@
         "name": "category-pref"
       }
     ],
-    "num": 4
+    "num": 4,
+    "rankings": [
+      {
+        "name": "popRank",
+
+        "indicatorNames": [
+          "purchase", "view"
+        ]
+      }
+    ]
   }
 }
