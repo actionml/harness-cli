@@ -11,6 +11,7 @@ ENV GIT_HASH=${GIT_HASH}
 ENV DATE_BUILD=${DATE_BUILD}
 ENV BRANCH=${BRANCH}
 
+RUN mkdir -p /data
 COPY . /harness-cli
 ENV PATH=/harness-cli/harness-cli/:$PATH
 RUN apt update && \
