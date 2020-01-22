@@ -46,12 +46,14 @@ echo "============================================="
 
 # set harness-env to point to the correct server for executing these tests
 diffs_and_errors_file=diffs_and_errors.txt
+diffs_and_errors_file_property_changes=diffs_and_errors_prop_changes.txt
 # for real CLI test: engine=test_ur_nav_hinting
 engine=test_ur
 test_queries=examples/ur/test-ur-mobile-device-queries.sh
 user_events=examples/ur/sample-mobile-device-ur-data.csv
 actual_query_results=actual_ur_results.out
 expected_test_results=examples/ur/expected-ur-results.txt
+property_change_events=examples/ur/mobile-device-ur-realtime-properties.csv
 
 
 echo
@@ -96,10 +98,27 @@ cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file}
 # echo "Getting diffs"
 if [ -s ${diffs_and_errors_file} ]
 then
-   echo " Some differences between actual and expected or server errors, check the actual results files. "
+   echo " Some differences between actual and expected or server errors, check ${actual_query_results} file. "
    cat ${diffs_and_errors_file}
    exit 1
 else
-   echo "Tests pass."
-   exit 0
+   #echo
+   #echo "Changing properties"
+   #echo
+   python3 examples/ur/import_mobile_device_ur_data.py --input_file ${property_change_events} --url ${host_url}
+
+   ./${test_queries} ${host_url} > ${actual_query_results}
+    # echo "Queries sent"
+
+   diff ${actual_query_results} ${expected_test_results} | grep "result" > ${diffs_and_errors_file_property_changes}
+   cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file_property_changes}
+
+   #if [ -s ${diffs_and_errors_file} ]
+   #then
+       echo "Tests pass."
+       exit 0
+   #else
+   #    echo "Input, train, query tests pass but realtime model updates test fails"
+   #    exit 1
+   #fi
 fi
