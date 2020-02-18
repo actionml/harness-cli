@@ -2,6 +2,7 @@
 
 # Harness CLI config, should work as-is unless you are using SSL or connecting to a remote Harness Server
 export HARNESS_SERVER_ADDRESS=${HARNESS_SERVER_ADDRESS:-localhost}
+export HARNESS_SERVER_PORT=${HARNESS_SERVER_PORT:-9090}
 
 export ELASTICSEARCH_REST_HOST=${ELASTICSEARCH_REST_HOST:-localhost}
 export ELASTICSEARCH_REST_PORT=${ELASTICSEARCH_REST_PORT:-9200}

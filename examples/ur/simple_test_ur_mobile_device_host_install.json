@@ -1,15 +1,13 @@
 {
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
-  "comment": "setup by default for host OS native installation",
+  "comment": "setup for host OS native installation",
   "sparkConf": {
-    "es.index.auto.create": "true",
-    "es.nodes.wan.only": "true",
     "master": "local",
-    "spark.driver.memory": "3g",
+    "spark.driver.memory": "4g",
+    "spark.executor.memory": "4g",
     "spark.es.index.auto.create": "true",
     "spark.es.nodes.wan.only": "true",
-    "spark.executor.memory": "3g",
     "spark.kryo.referenceTracking": "false",
     "spark.kryo.registrator": "org.apache.mahout.sparkbindings.io.MahoutKryoRegistrator",
     "spark.kryoserializer.buffer": "300m",
@@ -18,10 +16,12 @@
   "algorithm": {
     "indicators": [
       {
-        "name": "purchase"
+        "name": "purchase",
+        "alias": ["p1","p2","purchase"]
       },
       {
-        "name": "view"
+        "name": "view",
+        "alias": ["view", "v2", "v3"]
       },
       {
         "name": "category-pref"
