@@ -53,7 +53,6 @@ test_queries=examples/ur/test-ur-mobile-device-queries.sh
 user_events=examples/ur/sample-mobile-device-ur-data.csv
 actual_query_results=actual_ur_results.out
 expected_test_results=examples/ur/expected-ur-results.txt
-property_change_events=examples/ur/mobile-device-ur-realtime-properties.csv
 
 
 echo
@@ -102,23 +101,31 @@ then
    cat ${diffs_and_errors_file}
    exit 1
 else
-   #echo
-   #echo "Changing properties"
-   #echo
+   echo
+   echo "Phase 1 of tests pass."
+   echo
+
+   export expected_rt_update_test_results=examples/ur/expected-ur-results-realtime-model-updates.txt
+   export property_change_events=examples/ur/mobile-device-ur-realtime-properties.csv
+
+   echo "Running Phase 2: Realtime model updates"
+   echo
    python3 examples/ur/import_mobile_device_ur_data.py --input_file ${property_change_events} --url ${host_url}
 
    ./${test_queries} ${host_url} > ${actual_query_results}
-    # echo "Queries sent"
+   # echo "Queries sent"
 
-   diff ${actual_query_results} ${expected_test_results} | grep "result" > ${diffs_and_errors_file_property_changes}
+   diff ${actual_query_results} ${expected_rt_update_test_results} | grep "result" > ${diffs_and_errors_file_property_changes}
    cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file_property_changes}
 
-   #if [ -s ${diffs_and_errors_file} ]
-   #then
-       echo "Tests pass."
+   if [ -s ${diffs_and_errors_file_property_changes} ]
+   then
+       echo "Input, train, query tests pass but realtime model updates test fails"
+       echo "Realtime model update diffs"
+       cat ${diffs_and_errors_file_property_changes}
+       exit 1
+   else
+       echo "All tests pass."
        exit 0
-   #else
-   #    echo "Input, train, query tests pass but realtime model updates test fails"
-   #    exit 1
-   #fi
+   fi
 fi
