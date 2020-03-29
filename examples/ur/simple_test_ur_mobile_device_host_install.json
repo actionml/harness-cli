@@ -16,12 +16,10 @@
   "algorithm": {
     "indicators": [
       {
-        "name": "purchase",
-        "alias": ["p1","p2","purchase"]
+        "name": "purchase"
       },
       {
-        "name": "view",
-        "alias": ["view", "v2", "v3"]
+        "name": "view"
       },
       {
         "name": "category-pref"
@@ -31,10 +29,7 @@
     "rankings": [
       {
         "name": "popRank",
-
-        "indicatorNames": [
-          "purchase", "view"
-        ]
+        "indicatorNames": ["purchase"]
       }
     ]
   }

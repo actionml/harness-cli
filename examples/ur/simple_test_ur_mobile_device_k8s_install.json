@@ -27,6 +27,12 @@
         "name": "category-pref"
       }
     ],
-    "num": 4
+    "num": 4,
+    "rankings": [
+      {
+        "name": "popRank",
+        "indicatorNames": ["purchase"]
+      }
+    ]
   }
 }
