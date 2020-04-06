@@ -53,7 +53,6 @@ test_queries=examples/ur/test-ur-mobile-device-queries.sh
 user_events=examples/ur/sample-mobile-device-ur-data.csv
 actual_query_results=actual_ur_results.out
 expected_test_results=examples/ur/expected-ur-results.txt
-property_change_events=examples/ur/mobile-device-ur-realtime-properties.csv
 
 
 echo
