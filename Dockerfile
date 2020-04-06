@@ -2,7 +2,7 @@
 # bugs:
 #  1) the harness-cli script is not executable, is not in the executable path
 
-FROM ubuntu:cosmic
+FROM ubuntu
 
 ARG GIT_HASH
 ARG DATE_BUILD
