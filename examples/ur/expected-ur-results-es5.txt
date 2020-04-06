@@ -1,0 +1,113 @@
+Queries to: http://localhost:9090
+
++++++++++++++ User-based     +++++++++++++
+
+{"result":[{"item":"iPhone XR","score":0.0},{"item":"Galaxy 8","score":0.0},{"item":"iPhone 8","score":0.0},{"item":"iPhone XS","score":0.0},{"item":"iPad Pro","score":0.0},{"item":"Surface Pro","score":0.0},{"item":"Pixel Slate","score":0.0},{"item":"USB-C","score":0.0},{"item":" AirPods","score":0.0},{"item":"Sleeve","score":0.0},{"item":"iPhone Case","score":0.0},{"item":"USB-C Ear Buds","score":0.0}]}
+{"result":[{"item":"iPhone XR","score":0.0},{"item":"Galaxy 8","score":0.0},{"item":"iPhone 8","score":0.0},{"item":"iPhone XS","score":0.0}]}
+{"result":[{"item":"Pixel Slate","score":2.991049289703369},{"item":"USB-C Ear Buds","score":2.991049289703369},{"item":"USB-C","score":2.0137746334075928},{"item":"Surface Pro","score":0.3646431267261505}]}
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPad Pro","score":3.4235568046569824},{"item":" AirPods","score":1.8481417894363403}]}
+{"result":[{"item":"Pixel Slate","score":1.3862943649291992},{"item":"iPhone XR","score":0.9038681983947754},{"item":"Galaxy 8","score":0.9038681983947754},{"item":"USB-C Ear Buds","score":0.6931471824645996}]}
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPad Pro","score":3.4235568046569824},{"item":" AirPods","score":1.5968273878097534}]}
+{"result":[{"item":"USB-C Ear Buds","score":2.079441547393799},{"item":"iPhone XR","score":0.8187103867530823},{"item":"Galaxy 8","score":0.8187103867530823},{"item":"iPhone 8","score":0.8187103867530823}]}
+
+++++ Personalized with Business Rules ++++
+============= Inclusion      =============
+============= by categories  =============
+
+------------- all            -------------
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPad Pro","score":3.4235568046569824},{"item":" AirPods","score":1.8481417894363403}]}
+------------- Tablets        -------------
+{"result":[{"item":"iPad Pro","score":3.4235568046569824},{"item":"Surface Pro","score":0.8754687309265137}]}
+------------- Phones         -------------
+{"result":[{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPhone 8","score":1.1347919702529907}]}
+------------- Tablets or Phones -------------
+{"result":[{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPad Pro","score":3.4235568046569824},{"item":"iPhone 8","score":1.1347919702529907},{"item":"Surface Pro","score":0.8754687309265137}]}
+
+============= Exclusion      =============
+============= by categories  =============
+
+------------- all            -------------
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPad Pro","score":3.4235568046569824},{"item":" AirPods","score":1.8481417894363403}]}
+------------- No Tables     -------------
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824},{"item":" AirPods","score":1.8481417894363403},{"item":"USB-C Ear Buds","score":1.276250958442688}]}
+------------- No Phones     -------------
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPad Pro","score":3.4235568046569824},{"item":" AirPods","score":1.8481417894363403},{"item":"USB-C Ear Buds","score":1.276250958442688}]}
+------------- No Tablets or Phones -------------
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":" AirPods","score":1.8481417894363403},{"item":"USB-C Ear Buds","score":1.276250958442688},{"item":"Sleeve","score":1.1143605709075928}]}
+
+============= Boost          =============
+============= by categories  =============
+
+------------- all            -------------
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPad Pro","score":3.4235568046569824},{"item":" AirPods","score":1.8481417894363403}]}
+------------- Highly Boost Tablets -------------
+{"result":[{"item":"iPad Pro","score":17.286500930786133},{"item":"Surface Pro","score":6.629110336303711},{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824}]}
+------------- Highly Boost Phones -------------
+{"result":[{"item":"iPhone XS","score":17.286500930786133},{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone 8","score":3.805419683456421},{"item":"iPad Pro","score":3.4235568046569824}]}
+------------- Highly Boost Tablets or Phones ------------
+{"result":[{"item":"iPhone XS","score":17.286500930786133},{"item":"iPad Pro","score":17.286500930786133},{"item":"Surface Pro","score":6.629110336303711},{"item":"iPhone Case","score":5.034351825714111}]}
+
+============= Include A & B =============
+============= by categories  =============
+------------- all            -------------
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XS","score":3.4235568046569824},{"item":"iPad Pro","score":3.4235568046569824},{"item":" AirPods","score":1.8481417894363403}]}
+------------- Must Include Tables & Apple -------------
+{"result":[{"item":"iPad Pro","score":3.4235568046569824}]}
+------------- Must Include Tables & Microsoft -------------
+{"result":[{"item":"Surface Pro","score":0.8754687309265137}]}
+------------- Must Include Tables & Google -------------
+{"result":[]}
+
++++++++++++++ Item-based     +++++++++++++
+
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPad Pro","score":5.907106399536133},{"item":"Pixel Slate","score":2.991049289703369},{"item":"USB-C Ear Buds","score":2.991049289703369}]}
+{"result":[{"item":"iPhone XR","score":0.0},{"item":"Galaxy 8","score":0.0},{"item":"iPhone 8","score":0.0},{"item":"iPhone XS","score":0.0}]}
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPhone XS","score":6.417932033538818},{"item":"iPad Pro","score":6.417932033538818},{"item":"Galaxy 8","score":6.32291841506958}]}
+{"result":[{"item":"iPhone Case","score":7.296114921569824},{"item":"iPhone XS","score":5.477924346923828},{"item":"iPad Pro","score":5.477924346923828},{"item":"USB-C Ear Buds","score":3.6841964721679688}]}
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPhone XS","score":5.907106399536133},{"item":"Pixel Slate","score":2.991049289703369},{"item":"USB-C Ear Buds","score":2.991049289703369}]}
+{"result":[{"item":"iPhone Case","score":5.034351825714111},{"item":"iPhone XR","score":3.570908308029175},{"item":"Galaxy 8","score":3.570908308029175},{"item":"iPhone XS","score":3.4235568046569824}]}
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPhone XS","score":6.417932033538818},{"item":"iPad Pro","score":6.417932033538818},{"item":"iPhone XR","score":6.32291841506958}]}
+{"result":[{"item":"Pixel Slate","score":1.3862943649291992},{"item":"Sleeve","score":1.247891902923584},{"item":"iPhone XR","score":0.9038681983947754},{"item":"Galaxy 8","score":0.9038681983947754}]}
+
++++++ Item-based with Business Rules +++++
+============= Inclusion      =============
+
+------------- iPhone XR all  -------------
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPhone XS","score":6.417932033538818},{"item":"iPad Pro","score":6.417932033538818},{"item":"Galaxy 8","score":6.32291841506958}]}
+------------- iPhone XR rules ------------
+{"result":[{"item":"iPad Pro","score":6.417932033538818},{"item":"Pixel Slate","score":3.866518020629883},{"item":"Surface Pro","score":1.0577902793884277}]}
+{"result":[{"item":"iPhone XS","score":6.417932033538818},{"item":"Galaxy 8","score":6.32291841506958},{"item":"iPhone 8","score":2.836979866027832}]}
+{"result":[{"item":"iPhone XS","score":6.417932033538818},{"item":"iPad Pro","score":6.417932033538818},{"item":"Galaxy 8","score":6.32291841506958},{"item":"Pixel Slate","score":3.866518020629883}]}
+
+============= Exclusion      =============
+
+------------- iPhone XR all  -------------
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPhone XS","score":6.417932033538818},{"item":"iPad Pro","score":6.417932033538818},{"item":"Galaxy 8","score":6.32291841506958}]}
+------------- iPhone XR rules ------------
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPhone XS","score":6.417932033538818},{"item":"Galaxy 8","score":6.32291841506958},{"item":"USB-C Ear Buds","score":4.559665203094482}]}
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPad Pro","score":6.417932033538818},{"item":"USB-C Ear Buds","score":4.559665203094482},{"item":"Pixel Slate","score":3.866518020629883}]}
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"USB-C Ear Buds","score":4.559665203094482},{"item":"USB-C","score":3.1645030975341797},{"item":" AirPods","score":2.4803049564361572}]}
+
+============= Boost          =============
+
+------------- iPhone XR all  -------------
+{"result":[{"item":"iPhone Case","score":8.682409286499023},{"item":"iPhone XS","score":6.417932033538818},{"item":"iPad Pro","score":6.417932033538818},{"item":"Galaxy 8","score":6.32291841506958}]}
+------------- iPhone XR rules ------------
+{"result":[{"item":"iPad Pro","score":20.28087615966797},{"item":"Pixel Slate","score":9.620160102844238},{"item":"iPhone Case","score":8.682409286499023},{"item":"Surface Pro","score":6.811431884765625}]}
+{"result":[{"item":"iPhone XS","score":20.28087615966797},{"item":"Galaxy 8","score":8.993546485900879},{"item":"iPhone Case","score":8.682409286499023},{"item":"iPad Pro","score":6.417932033538818}]}
+{"result":[{"item":"iPhone XS","score":20.28087615966797},{"item":"iPad Pro","score":20.28087615966797},{"item":"Pixel Slate","score":9.620160102844238},{"item":"Galaxy 8","score":8.993546485900879}]}
+
+============= Include A & B =============
+
+{"result":[{"item":"iPad Pro","score":6.417932033538818}]}
+{"result":[{"item":"Surface Pro","score":1.0577902793884277}]}
+{"result":[{"item":"Pixel Slate","score":3.866518020629883}]}
+
++++++++++++++ Item-set-based +++++++++++++
+---------- All Apple but iPhone 8 --------
+{"result":[{"item":"iPhone Case","score":6.2383246421813965},{"item":"Galaxy 8","score":1.7021880149841309},{"item":"iPhone 8","score":1.7021880149841309},{"item":" AirPods","score":1.7021880149841309}]}
+----------- Include only Phone -----------
+{"result":[{"item":"Galaxy 8","score":1.7021880149841309},{"item":"iPhone 8","score":1.7021880149841309}]}
+----------- Include only Phone -----------
+----------- Boost Apple ------------------
+{"result":[{"item":"iPhone 8","score":11.10226058959961},{"item":"Galaxy 8","score":1.7021880149841309}]}
