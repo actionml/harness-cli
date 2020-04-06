@@ -1,7 +1,8 @@
 {
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
-  "comment": "setup for host OS native installation",
+  "mirrorType": "localfs",
+  "mirrorContainer": "/tmp/test_ur/local_test",
   "sparkConf": {
     "master": "local",
     "spark.driver.memory": "4g",
@@ -25,12 +26,6 @@
         "name": "category-pref"
       }
     ],
-    "num": 4,
-    "rankings": [
-      {
-        "name": "popRank",
-        "indicatorNames": ["purchase"]
-      }
-    ]
+    "num": 4
   }
 }

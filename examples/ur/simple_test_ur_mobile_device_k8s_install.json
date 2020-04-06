@@ -4,7 +4,6 @@
   "comment": "setup for k8s",
   "sparkConf": {
     "master": "spark://spark-master:7077",
-    "spark.driver.host": "harness",
     "spark.driver.memory": "4g",
     "spark.executor.memory": "4g",
     "spark.es.index.auto.create": "true",
@@ -27,12 +26,6 @@
         "name": "category-pref"
       }
     ],
-    "num": 4,
-    "rankings": [
-      {
-        "name": "popRank",
-        "indicatorNames": ["purchase"]
-      }
-    ]
+    "num": 4
   }
 }
