@@ -31,12 +31,19 @@ jobs:
     - attach_workspace:
         at: /root/project/dist
     - run:
+        name: Install Docker Compose and Kubectl
+        command: |
+          set -x
+          chmod +x docker/config-dependencies.sh
+          ./docker/config-dependencies.sh
+    - run:
         name: Docker login
         command: |
           echo -n ${DOCKER_PASSWORD} | docker login -u ${DOCKER_USERNAME} --password-stdin
     - run:
         name: Build harness-cli docker image
         command: |
+
           echo 'export SHORT_GIT_HASH=$(echo $CIRCLE_SHA1 | cut -c -7)' >> $SHELL_ENV
           echo 'export DATE_BUILD=$(date +'%Y-%m-%d')' >> $SHELL_ENV
           source $SHELL_ENV
@@ -51,28 +58,68 @@ jobs:
             *)
             ;;
           esac
+
+    - run:
+        name: Test docker image
+        command: |
+
+          case "${CIRCLE_BRANCH}" in
+            master|develop|devops)
+              cd docker && \
+              mv envs .env &&\
+              docker-compose up -d --build
+              docker-compose ps
+
+              sleep 45
+                         
+              docker-compose exec harness-cli bash -c 'curl elasticsearch:9200'
+
+
+              docker-compose exec harness-cli bash -c 'sed -i "s|training_sleep_seconds=40|training_sleep_seconds=90|g" /harness-cli/examples/ur/simple-integration-test.sh'
+     
+              docker-compose logs harness
+
+              docker-compose exec harness-cli bash -c 'harness-cli status'; RESULT=$?
+              docker-compose exec harness-cli bash -c 'harness-cli status system'; RESULT=$?
+              
+              docker-compose exec harness-cli bash -c 'cd harness-cli && ./examples/ur/simple-integration-test.sh dc'; RESULT=$?
+                            
+              echo "harness-cli simple-integration-test finished"
+
+              echo "export RESULT=$RESULT" >> $SHELL_ENV
+            ;;
+            *)
+              echo "export RESULT=1" >> $SHELL_ENV
+            ;;
+          esac
+          
+          source $SHELL_ENV
     - run:
         name: Publish docker image
         command: |
           source $SHELL_ENV
+
+          if [ $RESULT -eq 0 ]
+          then
           
-          case "${CIRCLE_BRANCH}" in
-            "master")
-              docker image push actionml/harness-cli:latest
-            ;;
-            develop|devops)
-              docker tag actionml/harness-cli:latest actionml/harness-cli:${CIRCLE_BRANCH}
-              docker image push actionml/harness-cli:${CIRCLE_BRANCH}
-              
-              docker tag actionml/harness-cli:latest actionml/harness-cli:${CIRCLE_BRANCH}-$SHORT_GIT_HASH
-              docker image push actionml/harness-cli:${CIRCLE_BRANCH}-$SHORT_GIT_HASH
-              
-              docker tag actionml/harness-cli:latest actionml/harness-cli:${CIRCLE_BRANCH}-$DATE_BUILD
-              docker image push actionml/harness-cli:${CIRCLE_BRANCH}-$DATE_BUILD
-            ;;
-            *)
-            ;;
-          esac
+            case "${CIRCLE_BRANCH}" in
+              "master")
+                docker image push actionml/harness-cli:latest
+              ;;
+              develop|devops)
+                docker tag actionml/harness-cli:latest actionml/harness-cli:${CIRCLE_BRANCH}
+                docker image push actionml/harness-cli:${CIRCLE_BRANCH}
+                
+                docker tag actionml/harness-cli:latest actionml/harness-cli:${CIRCLE_BRANCH}-$SHORT_GIT_HASH
+                docker image push actionml/harness-cli:${CIRCLE_BRANCH}-$SHORT_GIT_HASH
+                
+                docker tag actionml/harness-cli:latest actionml/harness-cli:${CIRCLE_BRANCH}-$DATE_BUILD
+                docker image push actionml/harness-cli:${CIRCLE_BRANCH}-$DATE_BUILD
+              ;;
+              *)
+              ;;
+            esac
+          fi
   test:
     docker:
     - image: alpine
