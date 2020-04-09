@@ -15,6 +15,12 @@
     "spark.serializer": "org.apache.spark.serializer.KryoSerializer"
   },
   "algorithm": {
+    "rankings": {
+      "name": "popRank",
+      "type": "popular",
+      "indicatorNames": ["purchase"],
+      "duration": "365 days"
+    },
     "indicators": [
       {
         "name": "purchase"

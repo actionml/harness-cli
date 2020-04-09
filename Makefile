@@ -10,7 +10,7 @@ DIST ?= ./dist
 # not sure where to get the version number so hard code?
 # the version number of the sdk is in the python code and not to be used as the cli version number
 # we should mirror the harness version number here
-VERSION := 0.5.0-SNAPSHOT
+VERSION := 0.5.2-SNAPSHOT
 
 # For containers use the "dist" target
 # to install on a host OS, use the "install" target or "dist install"

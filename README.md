@@ -1,14 +1,15 @@
 [![CircleCI](https://circleci.com/gh/actionml/harness-cli.svg?style=svg)](https://circleci.com/gh/actionml/harness-cli)
 
 # The Harness Control Client 
-### **Version 0.5.0, for Harness 0.5.0**
 
-The Harness Command Line Interface uses a connection to a running Harness Server to perform administrative tasks. Out of the box it is configured to communicate with http://localhost:9090 but a simple change will point it to any Harness server.
+### **Version 0.5.2-SNAPSHOT, for Harness 0.5.2-SNAPSHOT**
 
-## Deprecation Notes 
+The Harness Command Line Interface uses a connection to a running Harness Server to perform administrative tasks.
 
- - **This CLI duplicates and replaces** the one integrated in Harness 0.4.0. The integrated CLI will be removed in Harness-0.5.0-SNAPSHOT and replaced by this one. Until we deprecate and remove the integrated CLI this one will coexist and performs the same functions as the integrated one but with a new command-name `harness-cli status` instead of `harness status`. Once we switch this will become the only CLI and will become`harness-cli status` etc.
- - This CLI **cannot be used to start or stop** Harness, use the integrated cli to do this. `harness start` and `harness stop` should work.
+## Changes 
+
+ - **This CLI replaces** the one integrated with Harness in Harness 0.4.0.
+ - This CLI **cannot be used to start or stop** Harness, the integrated `harness start` and `harness stop` in the Harness project should work.
  - You must add the `harness-cli` script to your PATH and to be safe it should be before the integrated CLI. 
  - **The Harness Python SDK is now included** in this project: You will need to install the Harness Python SDK as well as dependent packages as shown in Setup below.
 

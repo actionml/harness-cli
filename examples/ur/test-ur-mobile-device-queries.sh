@@ -61,7 +61,7 @@ echo "============= Inclusion      ============="
 echo "============= by categories  ============="
 echo
 
-echo "------------- all            -------------"
+echo "------------- all U 2       -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2"
@@ -96,7 +96,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- Tablets or Phones -------------"
+echo "------------- Tablets OR Phones -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -104,6 +104,26 @@ curl -H "Content-Type: application/json" -d '
     {
        "name": "categories",
        "values": ["Tablets", "Phones"],
+       "bias": -1
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
+
+echo "------------- Tablets AND Phones -------------"
+echo "No results since no items have categories: Phones AND Tablets"
+curl -H "Content-Type: application/json" -d '
+{
+  "user": "U 2",
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets"],
+       "bias": -1
+    },
+    {
+       "name": "categories",
+       "values": ["Phones"],
        "bias": -1
     }
   ]
@@ -150,7 +170,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- No Tablets or Phones -------------"
+echo "------------- No Tablets OR Phones -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -158,6 +178,26 @@ curl -H "Content-Type: application/json" -d '
     {
        "name": "categories",
        "values": ["Tablets", "Phones"],
+       "bias": 0
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
+
+echo "------------- No Tablets AND no Phones -------------"
+echo "No difference from OR"
+curl -H "Content-Type: application/json" -d '
+{
+  "user": "U 2",
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets"],
+       "bias": 0
+    },
+    {
+       "name": "categories",
+       "values": ["Phones"],
        "bias": 0
     }
   ]
@@ -205,10 +245,8 @@ curl -H "Content-Type: application/json" -d '
 echo
 
 # fail?
-# todo: there results here look wrong, they should be ranked the same as no boost
-# but have an odd shuffled ranking, neither no-boost, not no-boost time boost
-# no item should have both of these categories so should only get one boost
-echo "------------- Highly Boost Tablets or Phones ------------"
+# todo: these results look wrong?
+echo "------------- Highly Boost Tablets OR Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -216,6 +254,25 @@ curl -H "Content-Type: application/json" -d '
     {
        "name": "categories",
        "values": ["Tablets", "Phones"],
+       "bias": 20
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
+
+echo "------------- Highly Boost Tablets AND Phones -----------"
+curl -H "Content-Type: application/json" -d '
+{
+  "user": "U 2",
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets"],
+       "bias": 20
+    },
+    {
+       "name": "categories",
+       "values": ["Phones"],
        "bias": 20
     }
   ]
@@ -233,7 +290,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- Must Include Tablets & Apple -------------"
+echo "------------- Must Include Tablets AND Apple -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -251,7 +308,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- Must Include Tablets & Microsoft -------------"
+echo "------------- Must Include Tablets AND Microsoft -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -269,8 +326,8 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-# passes: "U 2" bought a Pixel Slate so no results
-echo "------------- Must Include Tablets & Google -------------"
+echo "------------- Must Include Tablets AND Google -------------"
+echo "Note: U 2 bought a Pixel Slate so no results"
 curl -H "Content-Type: application/json" -d '
 {
   "user": "U 2",
@@ -353,7 +410,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- iPhone XR rules ------------"
+echo "------------- Tablets ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -367,6 +424,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "------------- Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -380,6 +438,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "------------- Tablets OR Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -387,6 +446,26 @@ curl -H "Content-Type: application/json" -d '
     {
        "name": "categories",
        "values": ["Tablets", "Phones"],
+       "bias": -1
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
+
+echo "------------- Tablets AND Phones ------------"
+echo "No results since no item has categories: Tablets & Phones"
+curl -H "Content-Type: application/json" -d '
+{
+  "item": "iPhone XR",
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets"],
+       "bias": -1
+    },
+    {
+       "name": "categories",
+       "values": ["Phones"],
        "bias": -1
     }
   ]
@@ -403,7 +482,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- iPhone XR rules ------------"
+echo "------------- Tablets ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -417,6 +496,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "------------- Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -430,6 +510,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "------------- Tablets OR Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -437,6 +518,26 @@ curl -H "Content-Type: application/json" -d '
     {
        "name": "categories",
        "values": ["Tablets", "Phones"],
+       "bias": 0
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
+
+echo "------------- exclude Tablets AND exclude Phones ------------"
+echo "No difference from OR"
+curl -H "Content-Type: application/json" -d '
+{
+  "item": "iPhone XR",
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets"],
+       "bias": 0
+    },
+    {
+       "name": "categories",
+       "values": ["Phones"],
        "bias": 0
     }
   ]
@@ -453,7 +554,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "------------- iPhone XR rules ------------"
+echo "------------- Tablets ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -467,6 +568,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "------------- Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -480,6 +582,7 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "------------- Tablets OR Phones ------------"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -493,10 +596,8 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
-echo
-echo "============= Include A & B ============="
-echo
-
+echo "------------- Tablets AND Phones ------------"
+echo "No different from OR"
 curl -H "Content-Type: application/json" -d '
 {
   "item": "iPhone XR",
@@ -504,60 +605,28 @@ curl -H "Content-Type: application/json" -d '
     {
        "name": "categories",
        "values": ["Tablets"],
-       "bias": -1
-    },{
+       "bias": 20
+    },
+    {
        "name": "categories",
-       "values": ["Apple"],
-       "bias": -1
+       "values": ["Phones"],
+       "bias": 20
     }
   ]
 }' $host_url/engines/test_ur/queries
 echo
-
-curl -H "Content-Type: application/json" -d '
-{
-  "item": "iPhone XR",
-  "rules": [
-    {
-       "name": "categories",
-       "values": ["Tablets"],
-       "bias": -1
-    },{
-       "name": "categories",
-       "values": ["Microsoft"],
-       "bias": -1
-    }
-  ]
-}' $host_url/engines/test_ur/queries
-echo
-
-curl -H "Content-Type: application/json" -d '
-{
-  "item": "iPhone XR",
-  "rules": [
-    {
-       "name": "categories",
-       "values": ["Tablets"],
-       "bias": -1
-    },{
-       "name": "categories",
-       "values": ["Google"],
-       "bias": -1
-    }
-  ]
-}' $host_url/engines/test_ur/queries
 
 echo
 echo
 echo "+++++++++++++ Item-set-based +++++++++++++"
-echo "---------- All Apple but iPhone 8 --------"
+echo "---------- All for Apple Phones --------"
 curl -H "Content-Type: application/json" -d '
 {
   "itemSet": ["iPhone XR", "iPhone XS", "iPad Pro"]
 }' $host_url/engines/test_ur/queries
 echo
 
-echo "----------- Include only Phone -----------"
+echo "----------- Include only Phones -----------"
 curl -H "Content-Type: application/json" -d '
 {
   "itemSet": ["iPhone XR", "iPhone XS", "iPad Pro"],
@@ -571,9 +640,57 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "----------- Include only Tablets -----------"
+curl -H "Content-Type: application/json" -d '
+{
+  "itemSet": ["iPhone XR", "iPhone XS", "iPad Pro"],
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets"],
+       "bias": -1
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
 
-echo "----------- Include only Phone -----------"
-echo "----------- Boost Apple ------------------"
+echo "----------- Include only Tablets OR Phones-----------"
+curl -H "Content-Type: application/json" -d '
+{
+  "itemSet": ["iPhone XR", "iPhone XS", "iPad Pro"],
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets", "Phones"],
+       "bias": -1
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
+
+echo "----------- Include only Tablets AND Phones-----------"
+curl -H "Content-Type: application/json" -d '
+{
+  "itemSet": ["iPhone XR", "iPhone XS", "iPad Pro"],
+  "rules": [
+    {
+       "name": "categories",
+       "values": ["Tablets"],
+       "bias": -1
+    },
+    {
+       "name": "categories",
+       "values": ["Phones"],
+       "bias": -1
+    }
+  ]
+}' $host_url/engines/test_ur/queries
+echo
+
+
+echo "----------- Mixed Biases -----------------"
+echo "----------- Include only Phones ----------"
+echo "----------- AND Boosts Apple -------------"
 curl -H "Content-Type: application/json" -d '
 {
   "itemSet": ["iPhone XR", "iPhone XS", "iPad Pro"],
