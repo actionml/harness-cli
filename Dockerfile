@@ -20,6 +20,8 @@ RUN apt update && \
     pip3 install datetime && \
     pip3 install argparse && \
     cd /harness-cli/python-sdk/ && python3 setup.py install && \
+    yes | apt install openjdk-8-jdk && \
+    cd /harness-cli/diff-tool/ && make build && \
     apt autoremove && \
     rm -rf /harness-cli/python-sdk && \
     rm -rf /var/apt/cache/*
