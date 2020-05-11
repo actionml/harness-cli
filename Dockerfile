@@ -10,18 +10,23 @@ ARG BRANCH
 ENV GIT_HASH=${GIT_HASH}
 ENV DATE_BUILD=${DATE_BUILD}
 ENV BRANCH=${BRANCH}
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN mkdir -p /data
 COPY . /harness-cli
 ENV PATH=/harness-cli/harness-cli/:$PATH
+
 RUN apt update && \
-    apt install python3 python3-pip curl -y && \
+    apt-get install -y tzdata && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+
+RUN apt install -y python3 python3-pip curl openjdk-8-jdk && \
     pip3 install pytz && \
     pip3 install datetime && \
     pip3 install argparse && \
-    cd /harness-cli/python-sdk/ && python3 setup.py install && \
-    yes | apt install openjdk-8-jdk && \
-    cd /harness-cli/diff-tool/ && make build && \
+    cd /harness-cli/python-sdk/ && python3 setup.py install
+
+RUN cd /harness-cli/diff-tool/ && make build && \
     apt autoremove && \
     rm -rf /harness-cli/python-sdk && \
     rm -rf /var/apt/cache/*
