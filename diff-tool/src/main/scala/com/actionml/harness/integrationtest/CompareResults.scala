@@ -1,7 +1,5 @@
 package com.actionml.harness.integrationtest
 
-import java.security.InvalidParameterException
-
 import io.circe.parser._
 import zio._
 import zio.stream.{ZSink, ZStream}
@@ -18,10 +16,8 @@ object CompareResults extends App {
         case Left(_) => Nil
       }
     def fn(percentage: Float) = {
-//      val threshold = percentage / 100
-//      val in = System.in
-      val threshold = 0.3f
-      val in = new java.io.FileInputStream("/Users/andrey/tmp/diff-tool.txt")
+      val threshold = percentage / 100
+      val in = System.in
       ZStream.fromInputStream(in, 512).mapErrorCause(_ => Cause.empty)
         .chunks
         .transduce(ZSink.utf8DecodeChunk)
