@@ -23,11 +23,12 @@ object CompareResults extends App {
         .transduce(ZSink.utf8DecodeChunk)
         .transduce(ZSink.splitLines)
         .flatMap(c => ZStream.fromChunk(c))
+        .filter(s => s.trim.nonEmpty && (s.contains("<") || s.contains(">")))
         .fold((List.empty[String], List.empty[String])) { (acc, i) =>
           if (i.startsWith("<")) (i.drop(1) :: acc._1, acc._2)
           else (acc._1, i.drop(1) :: acc._2)
         }
-        .filterOrDieMessage { case (a, b) => a.size == b.size }("Size of expected and actual lists should be the same")
+        .filterOrDieMessage { case (a, b) => a.length == b.length }("Size of expected and actual lists should be the same")
         .map { case (a, b) => a.map(i => i -> parseResults(i)) zip b.map(i => i -> parseResults(i)) }
         .map {
           _.zipWithIndex.foreach {
