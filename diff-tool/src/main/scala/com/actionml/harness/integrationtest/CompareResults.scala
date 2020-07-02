@@ -23,7 +23,10 @@ object CompareResults extends App {
         .transduce(ZSink.utf8DecodeChunk)
         .transduce(ZSink.splitLines)
         .flatMap(c => ZStream.fromChunk(c))
-        .filter(s => s.trim.nonEmpty && (s.contains("<") || s.contains(">")))
+        .filter { line =>
+          val s = line.trim
+          s.nonEmpty && (s.startsWith("<") || s.startsWith(">"))
+        }
         .fold((List.empty[String], List.empty[String])) { (acc, i) =>
           if (i.startsWith("<")) (i.drop(1) :: acc._1, acc._2)
           else (acc._1, i.drop(1) :: acc._2)
@@ -45,8 +48,7 @@ object CompareResults extends App {
                   }
               }
           }
-        }
-        .map(_ => 1)
+        }.as(1)
     }
 
     args.headOption match {
