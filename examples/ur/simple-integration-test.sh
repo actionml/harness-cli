@@ -29,7 +29,7 @@ case ${command} in
     engine_json=examples/ur/simple_test_ur_mobile_device_dc_install.json
     ;;
   *) # assume localhost if no style passed in
-    training_sleep_seconds=30
+    training_sleep_seconds=120
     sleep_seconds=1
     DEPLOYMENT_STYLE="all-localhost"
     engine_json=examples/ur/simple_test_ur_mobile_device_host_install.json
@@ -111,7 +111,6 @@ else
    echo "Running Phase 2: Realtime model updates"
    echo
    python3 examples/ur/import_mobile_device_ur_data.py --input_file ${property_change_events} --url ${host_url}
-   sleep 1
 
    ./${test_queries} ${host_url} > ${actual_query_results}
    # echo "Queries sent"

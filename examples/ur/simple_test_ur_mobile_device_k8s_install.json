@@ -3,7 +3,7 @@
   "engineFactory": "com.actionml.engines.ur.UREngine",
   "comment": "setup for k8s",
   "mirrorType": "localfs",
-  "mirrorLocation": "/data/mirrors/test_ur_stage",
+  "mirrorContainer": "/data/mirrors/stage",
   "sparkConf": {
     "master": "spark://spark-master:7077",
     "spark.driver.memory": "4g",

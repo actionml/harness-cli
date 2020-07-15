@@ -48,7 +48,7 @@ def import_events(client, file, primary_event, with_dates):
     #event_date = datetime.datetime(2015, 8, 13, 12, 24, 41)
     now_date = datetime.datetime.now(pytz.utc) - datetime.timedelta(days=2.7)
     current_date = now_date
-    event_time_increment = datetime.timedelta(days= -0.8)
+    event_time_increment = datetime.timedelta(days= -0.05)
     available_date_increment = datetime.timedelta(days= 0.8)
     event_date = now_date # - datetime.timedelta(days= 1.3)
     available_date = event_date + datetime.timedelta(days=-1)

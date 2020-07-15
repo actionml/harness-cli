@@ -6,46 +6,52 @@
 
 The Harness Command Line Interface uses a connection to a running Harness Server to perform administrative tasks.
 
-## Changes 
-
- - **This CLI replaces** the one integrated with Harness in Harness 0.4.0.
- - This CLI **cannot be used to start or stop** Harness, the integrated `harness start` and `harness stop` in the Harness project should work.
- - You must add the `harness-cli` script to your PATH and to be safe it should be before the integrated CLI. 
- - **The Harness Python SDK is now included** in this project: You will need to install the Harness Python SDK as well as dependent packages as shown in Setup below.
-
-## Requirements
+# Requirements
 
  - Python 3: Install so that it is executed with `python3` NOT `python`. Check with `which python3` or `python3 -version`
  - A running Harness Server
  - Linux, macOS, or other 'nix version
+ 
+ OR
+ 
+ - use the harness-cli container published on docker hub [here](https://hub.docker.com/repository/docker/actionml/harness-cli).
 
-## Setup
+## Installation and Setup
+
+### Source Installation
 
 To get the project do a git pull from the `develop` branch of this repo: https://github.com/actionml/harness-cli.git.
 
 Set your PATH env variable to point to the `harness-cli/harness-cli` directory of this project **AND** make sure it is before the integrated (and deprecated) CLI in `harness/dist/bin` or wherever you install the CLI that comes with the Harness repo.
 
-### Install the Harness Python SDK
+ 1. Install the Harness Python SDK
 
-Depending on what OS and version of python3 you may need to install several packages from PyPI (the Python Package Index). For this you must first install `python3` and `pip3`
+ Depending on what OS and version of python3 you may need to install several packages from PyPI (the Python Package Index). For this you must first install `python3` and `pip3`
 
-For Ubuntu 16.04+
+ For Ubuntu 16.04+
 
- - `sudo apt-get install python3 python3-pip`
+  - `sudo apt-get install python3 python3-pip`
 
-Then with pip3 install:
+ 2. with pip3 install:
 
- - `pip3 install pytz`
- - `pip3 install datetime`
- - `pip3 install argparse`
+  - `pip3 install pytz`
+  - `pip3 install datetime`
+  - `pip3 install argparse`
 
-Then install the Harness Python Client SDK:
+ 3. install the Harness Python Client SDK:
 
- - `cd harness-cli/python-sdk`
- - `python3 setup.py install`
+  - `cd harness-cli/python-sdk`
+  - `python3 setup.py install`
 
-This will put the SDK in a place any python program should be able to access it. and this is important because the Harness Python CLI uses the SDK.
+ This will put the SDK in a place any python program can access
 
+### Container Installation
+
+After [installing Docker](https://docs.docker.com/engine/install/) either Engine or Desktop, proceed to install the `harness-cli` container. 
+
+ 1. 
+
+ 
 ### Localhost
 
 If you are running Harness locally on `http://localhost:9090` no other config is required. Once Harness is started, run `harness-cli status` to see where the cli is pointed and to get connection status.
@@ -58,45 +64,7 @@ For the simple case, just change `HARNESS_SERVER_ADDRESS` and `HARNESS_SERVER_PO
 
 ### Full Settings
 
-These should allow full control of the CLI but the Auth-Server commands involving creating permissions, users, etc are not tested except in the embedded CLI.
-
-```
-# harness-cli environment file (sourced by scripts)
-
-# harness-cli config, should work as-is unless you are using SSL or connecting to a remote Harness Server
-export HARNESS_SERVER_ADDRESS=${HARNESS_SERVER_ADDRESS:-localhost}
-export HARNESS_SERVER_PORT=${HARNESS_SERVER_PORT:-9090}
-
-# Java and Python client SDKs use the following for TLS/SSL, not used by the server
-# the file provided works with localhost, create your own for some other IP address
-export HARNESS_CLI_CERT_PATH=${HARNESS_CLI_CERT_PATH:-$HARNESS_CLI_HOME/harness.pem}
-
-# =============================================================
-# Only change to enable TLS/SSL
-# =============================================================
-
-# export HARNESS_CLI_SSL_ENABLED=true # to enable TLS/SSL using the rest below for "localhost" keys passwords and certs
-export HARNESS_CLI_SSL_ENABLED=false
-
-# Harness TLS/SSL server support. A file needs to be provided even if TLS is not used, one is supplied for "localhost"
-#export HARNESS_KEYSTORE_PASSWORD=${HARNESS_KEYSTORE_PASSWORD:-changeit}
-#export HARNESS_KEYSTORE_PATH=${HARNESS_KEYSTORE_PATH:-$HARNESS_CLI_HOME/conf/harness.jks}
-
-# =============================================================
-# Only used for Authentication
-# =============================================================
-
-# Harness Auth-Server setup
-# export HARNESS_CLI_AUTH_ENABLED=true
-export HARNESS_CLI_AUTH_ENABLED=${HARNESS_CLI_AUTH_ENABLED:-false}
-# When auth is enabled there must be an admin user-id set so create one before turning on Auth
-# Both the Harness server and the Python CLI need this env var when using Auth
-# export ADMIN_USER_ID=some-user-id
-# The Python CLI needs to pass the user-id and user-secret to the Python SDK so when using Auth supply a pointer to
-# the user-secret here.
-# export ADMIN_USER_SECRET_LOCATION=${ADMIN_USER_SECRET_LOCATION:-"$HOME/.ssh/${ADMIN_USER_ID}.secret"}
-
-```
+Various settings are passed into `harness-cli` via the host's env and will allow full control of the CLI or optionally you can edit `harness-cli/harness-cli/harness-cli-env`.
 
 Notice that `HARNESS_CLI_HOME` should not be set since it is calculated internally.
 
@@ -174,4 +142,11 @@ root@f87d1403aca9:/#
 ```
 
 The "status" gives an "OK" if connections can be made, the rest of the info is client config. The "status engines" hits the DB to find any installed engines so if you have new Harness installation you will get an empty JSON array of Engine Instance info.
+
+## Changes from v0.4.0
+
+ - **This CLI replaces** the one integrated with Harness in Harness 0.4.0.
+ - This CLI **cannot be used to start or stop** Harness, the integrated `harness start` and `harness stop` in the Harness project should work.
+ - You must add the `harness-cli` script to your PATH.
+ - **The Harness Python SDK is now included** in this project: You will need to install the Harness Python SDK as well as dependent packages as shown in Setup below.
 

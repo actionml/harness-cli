@@ -308,7 +308,7 @@ class EnginesClient(BaseClient):
     def async_get(self, engine_id):
         """
         Asynchronously get an engine info from Harness Server.
-        :param engine_id:c
+        :param engine_id:
         :returns: AsyncRequest object.
         """
         if engine_id is None:
