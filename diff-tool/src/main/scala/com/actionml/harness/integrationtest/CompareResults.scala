@@ -36,9 +36,10 @@ object CompareResults extends App {
           (a zip b).filterNot { case (actual, expected) =>
             val aFields = parseResults(actual)
             val eFields = parseResults(expected)
-            (aFields.keys != eFields.keys && (aFields.values.forall(_ != 0) || eFields.values.forall(_ != 0))) ||
+            (aFields.values.forall(_ == 0) && eFields.values.forall(_ == 0)) ||
+            (aFields.filterNot(_._2 == 0).keys != eFields.filterNot(_._2 == 0).keys) ||
               (aFields.keys == eFields.keys && {
-                aFields.zip(eFields).forall { case ((_, aVal), (_, eVal)) =>
+                aFields.zip(eFields).exists { case ((_, aVal), (_, eVal)) =>
                   val max = Math.max(aVal, eVal)
                   Math.abs(aVal - eVal) / (if (max == 0) 1 else max) <= threshold
                 }
