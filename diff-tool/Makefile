@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := build
-.PHONY: sbt clean build stage
+.PHONY: sbt clean build
 
 ROOT := $(abspath $(dir $(lastword $(MAKEFILE_LIST))))
 SBT_URL ?= https://git.io/sbt
@@ -26,4 +26,4 @@ build: sbt
 clean: sbt
 	cd $(ROOT) && \
 		$(SBT) ++$(SCALA_VERSION) -batch clean
-	find $(RESTSRV_DIR) -name "__pycache__" -exec rm -r {} \; || true
+	find $(ROOT) -name "__pycache__" -exec rm -r {} \; || true
