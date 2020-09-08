@@ -92,6 +92,7 @@ echo
 # echo "Queries sent"
 
 diff ${actual_query_results} ${expected_test_results} | grep -i '^[\<,\>]' | ./compare-results.sh 5 > ${diffs_and_errors_file}
+#diff ${actual_query_results} ${expected_test_results} | grep "result" > ${diffs_and_errors_file}
 cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file}
 
 # echo "Getting diffs"
@@ -116,6 +117,7 @@ else
    # echo "Queries sent"
 
    diff ${actual_query_results} ${expected_rt_update_test_results} | grep -i '^[\<,\>]' | ./compare-results.sh 5 > ${diffs_and_errors_file_property_changes}
+   #diff ${actual_query_results} ${expected_rt_update_test_results} | grep "result" > ${diffs_and_errors_file}
    cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file_property_changes}
 
    if [ -s ${diffs_and_errors_file_property_changes} ]
