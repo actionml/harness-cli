@@ -40,6 +40,9 @@ No results since no items have categories: Phones AND Tablets
 ------------- No Tablets AND no Phones -------------
 No difference from OR
 {"result":[{"item":"USB-C Ear Buds","score":4.731611728668213},{"item":"iPhone Case","score":3.657214403152466},{"item":" AirPods","score":3.657214403152466},{"item":"Sleeve","score":1.4489619731903076}]}
+------------- No USB-C Ear Buds, no iPhone Case -------------
+exclude one item
+{"result":[{"item":"iPhone XS","score":3.657214403152466},{"item":"iPad Pro","score":3.657214403152466},{"item":" AirPods","score":3.657214403152466},{"item":"iPhone 8","score":2.0563013553619385}]}
 
 ============= Boost          =============
 ============= by categories  =============

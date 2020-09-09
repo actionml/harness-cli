@@ -2,9 +2,11 @@
 
 # The Harness Control Client 
 
-### **Version 0.5.2-SNAPSHOT, for Harness 0.5.2-SNAPSHOT**
-
 The Harness Command Line Interface uses a connection to a running Harness Server to perform administrative tasks.
+
+**Major Changes:**
+
+ - `hctl` is the preferred alternative to `harness-cli`. Both continue to function. This doc uses `harness-cli` but will switch to `hctl` in the next version.
 
 # Requirements
 
@@ -48,9 +50,6 @@ Set your PATH env variable to point to the `harness-cli/harness-cli` directory o
 ### Container Installation
 
 After [installing Docker](https://docs.docker.com/engine/install/) either Engine or Desktop, proceed to install the `harness-cli` container. 
-
- 1. 
-
  
 ### Localhost
 
@@ -68,7 +67,7 @@ Various settings are passed into `harness-cli` via the host's env and will allow
 
 Notice that `HARNESS_CLI_HOME` should not be set since it is calculated internally.
 
-**Deprecation Warning:** This env based configuration will eventually be replaced with a different scheme using YAML files. Before all upgrades consult this README.
+**Deprecation Warning:** This env based configuration may be changed at any time so before all upgrades consult this README.
 
 ## Help
 
@@ -83,28 +82,22 @@ To use this setup with integration tests make the changes to the cli above then 
  -  `"master": "spark:<//some-spark-master>:7077"` This should point to the correct Spark master, or use `"local"` to use the Spark build-in to Harness
  -  `"es.nodes": "<some-es-node-1>,<some-es-node2>"` These should be the IPs or DNS names of the ES nodes in the installation, comma separated with no spaces, quotes or < > characters.
 
-Run the test with new params for the remote installation of harness like this:
+Run the test with new params for the remote installation of harness (harness-env must also point the cli to the correct location) like this:
 
  - `./examples/ur/ur-integration-test.sh <address-of-harness> <port-of-harness>`
  - The parameters default to `localhost` and `9090`
 
-Note: Tests do not currently work with https.
- 
-The test will pause to allow hand start of training and finishing training to start queries. At the end it will compare actual results to expected ones and exit with 0 if the tests pass or 1 if they do not.
+At the end it will compare actual results to expected ones and exit with 0 if the tests pass or 1 if they do not.
 
-**Deprecation Warning:** The tests are a work in progress so expect changes as they are refactored. Consult this README before any upgrade.
-
-# Versions
-
-The Harness-CLI follows the same version numbers as the Harness Server. If you build from source there will be a git tag in the master branch for every release after 0.4.0-RC1. For containers the image tags also follow Harness naming.
+**Deprecation Warning:** The tests are a work in progress so expect changes.
 
 # Containers
 
-This project is published as `actionml/harness-cli:<tag>` where supported tags are:
+This project is published as a docker image with tags of the form: `actionml/harness-cli:<tag>` where supported tags are:
 
- - `latest`: most recent stable release, the most recent version of code tagged and pushed to the master branch of the git repo.
- - `develop`: the most recent version of the work-in-progress. The most recent commit to the git `develop` branch. See the commit number tag to find the exact commit.
- - `0.4.0-RC1`, `0.4.0`: release tags by version, which will match the tag in the master branch of the git repo.
+ - `latest`: most recent stable release, the most recent version of code tagged and pushed to the master branch of the git repo as an official release.
+ - `develop`: the most recent version of the work-in-progress. The most recent commit to the git `develop` branch. See the commit tag to find the last 6 characters of exact git commit number.
+ - `0.5.1-RC1`, `0.6.0`, ...: release tags by version, which will match the tag in the git repo.
 
 ## Running the `harness-cli` Container
 
@@ -143,7 +136,20 @@ root@f87d1403aca9:/#
 
 The "status" gives an "OK" if connections can be made, the rest of the info is client config. The "status engines" hits the DB to find any installed engines so if you have new Harness installation you will get an empty JSON array of Engine Instance info.
 
-## Changes from v0.4.0
+# Versions
+
+The Harness-CLI follows the same version numbers as the Harness Server. If you build from source there will be a git tag in the master branch for every release after 0.4.0-RC1. For containers the image tags also follow Harness naming.
+
+## harness-cli version 0.6.0
+
+This is in sync with Harness 0.6.0 but should be backward compatible with all 0.5.x harness versions.
+
+New features:
+
+ - `harness-cli` now has an alias of `hctl` which is the preferred invocation. 
+ - Some slight edits to command responses for clarity. These include the renaming of "_id" to "name" in the JSON response for `hctl status engines`.
+
+## 0.5.0 changes from v0.4.0
 
  - **This CLI replaces** the one integrated with Harness in Harness 0.4.0.
  - This CLI **cannot be used to start or stop** Harness, the integrated `harness start` and `harness stop` in the Harness project should work.
