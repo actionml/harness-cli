@@ -3,7 +3,7 @@ Provides easy-to-use functions for integrating
 Python applications with ActionML's REST API for the Harness Server.
 """
 
-__version__ = "0.5.0"
+__version__ = "0.6.0"
 
 # import packages
 import re
@@ -308,7 +308,7 @@ class EnginesClient(BaseClient):
     def async_get(self, engine_id):
         """
         Asynchronously get an engine info from Harness Server.
-        :param engine_id:c
+        :param engine_id:
         :returns: AsyncRequest object.
         """
         if engine_id is None:

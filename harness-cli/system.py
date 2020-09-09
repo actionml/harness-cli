@@ -14,7 +14,7 @@ if args.action == 'info':
     try:
         res = system_client.info()
         # print(str(res))
-        print_success(res, 'Harness system info:\n')
+        print_success(res, 'Harness server and system info:\n')
     except HttpError as err:
         print_failure(err, 'Error getting Harness system info.\n')
 

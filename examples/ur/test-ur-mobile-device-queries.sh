@@ -204,6 +204,15 @@ curl -H "Content-Type: application/json" -d '
 }' $host_url/engines/test_ur/queries
 echo
 
+echo "------------- No USB-C Ear Buds, no iPhone Case -------------"
+echo "exclude one item"
+curl -H "Content-Type: application/json" -d '
+{
+  "user": "U 2",
+  "blacklistItems": ["USB-C Ear Buds", "iPhone Case"]
+}' $host_url/engines/test_ur/queries
+echo
+
 echo
 echo "============= Boost          ============="
 echo "============= by categories  ============="
