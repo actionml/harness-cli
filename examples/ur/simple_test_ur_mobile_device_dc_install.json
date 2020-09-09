@@ -2,8 +2,6 @@
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
   "comment": "setup for docker-compose",
-  "mirrorType": "localfs",
-  "mirrorContainer": "/data/mirrors/test_ur_stage",
   "sparkConf": {
     "master": "local",
     "spark.driver.memory": "3g",

@@ -15,8 +15,7 @@
   "algorithm": {
     "indicators": [
       {
-        "name": "purchase",
-        "maxIndicatorsPerQuery": 50
+        "name": "purchase"
       },
       {
         "name": "view"
