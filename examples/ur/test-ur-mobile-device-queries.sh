@@ -6,7 +6,7 @@ else
   export host_url=$1
 fi
 
-echo "Queries to: "${host_url}
+#echo "Queries to: "${host_url}
 
 echo
 echo "+++++++++++++ User-based     +++++++++++++"
