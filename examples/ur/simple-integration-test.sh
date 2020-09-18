@@ -66,9 +66,9 @@ echo "---------------------- Testing Simple Personalized Recs with Business Rule
 
 echo "Wipe the Engine clean of data and model first"
 harness-cli delete ${engine}
-sleep $(($sleep_seconds * 5))
+sleep $sleep_seconds
 harness-cli add ${engine_json} || true
-sleep $(($sleep_seconds * 5))
+sleep $sleep_seconds
 
 echo
 echo "Sending all personalization events"
