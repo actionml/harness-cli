@@ -30,7 +30,7 @@ case ${command} in
     ;;
   *) # assume localhost if no style passed in
     training_sleep_seconds=30
-    sleep_seconds=1
+    sleep_seconds=3
     DEPLOYMENT_STYLE="all-localhost"
     engine_json=examples/ur/simple_test_ur_mobile_device_host_install.json
     ;;
