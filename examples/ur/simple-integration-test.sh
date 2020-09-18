@@ -30,7 +30,7 @@ case ${command} in
     ;;
   *) # assume localhost if no style passed in
     training_sleep_seconds=30
-    sleep_seconds=3
+    sleep_seconds=1
     DEPLOYMENT_STYLE="all-localhost"
     engine_json=examples/ur/simple_test_ur_mobile_device_host_install.json
     ;;
@@ -66,9 +66,9 @@ echo "---------------------- Testing Simple Personalized Recs with Business Rule
 
 echo "Wipe the Engine clean of data and model first"
 harness-cli delete ${engine}
-sleep $sleep_seconds
+sleep $(($sleep_seconds * 5))
 harness-cli add ${engine_json} || true
-sleep $sleep_seconds
+sleep $(($sleep_seconds * 5))
 
 echo
 echo "Sending all personalization events"
