@@ -140,6 +140,10 @@ The "status" gives an "OK" if connections can be made, the rest of the info is c
 
 The Harness-CLI follows the same version numbers as the Harness Server. If you build from source there will be a git tag in the master branch for every release after 0.4.0-RC1. For containers the image tags also follow Harness naming.
 
+## harness-cli version 1.0.0-SNAPSHOT
+
+Synced with harness-1.0.0-SNAPSHOT. No planned changes from 0.6.0. This version is in the "develop" branch of this repo.
+
 ## harness-cli version 0.6.0
 
 This is in sync with Harness 0.6.0 but should be backward compatible with all 0.5.x harness versions.
