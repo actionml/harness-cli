@@ -18,5 +18,12 @@ if args.action == 'info':
     except HttpError as err:
         print_failure(err, 'Error getting Harness system info.\n')
 
+if args.action == 'cluster':
+    try:
+        res = system_client.cluster_info()
+        print_success(res, 'Harness cluster info:\n')
+    except HttpError as err:
+        print_failure(err, 'Error getting Harness cluster info.\n')
+
 else:
     print_warning("Unknown options: %{}".format(args.action))

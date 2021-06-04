@@ -21,5 +21,6 @@ case ${command} in
   revoke) ${HARNESS_CLI_HOME}/harness-revoke "$@" ;;
   train) ${HARNESS_CLI_HOME}/harness-engine-train "$@" ;;
   cancel) ${HARNESS_CLI_HOME}/harness-engine-cancel-job "$@" ;;
+  cluster) ${HARNESS_CLI_HOME}/harness-cluster "$@" ;;
   *) ${HARNESS_CLI_HOME}/harness-help ;;
 esac

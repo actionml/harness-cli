@@ -173,7 +173,6 @@ class BaseClient(object):
 
 class SystemClient(BaseClient):
     def __init__(self, url="http://localhost:9090", threads=1, qsize=0, timeout=5, user_id=None, user_secret=None):
-        self.path = "/system"
         super(SystemClient, self).__init__(url, threads, qsize, timeout, user_id, user_secret)
 
     def async_info(self):
@@ -181,13 +180,23 @@ class SystemClient(BaseClient):
         Asynchronously get system info from Harness Server.
         :returns: AsyncRequest object.
         """
-        request = AsyncRequest("GET", self.path)
+        request = AsyncRequest("GET", "/system")
         request.set_response_handler(self._ok_response_handler)
         self._connection.make_request(request)
         return request
 
     def info(self):
         return self.async_info().get_response()
+
+    def async_cluster_info(self):
+        request = AsyncRequest("GET", "/cluster")
+        request.set_response_handler(self._ok_response_handler)
+        self._connection.make_request(request)
+        return request
+
+    def cluster_info(self):
+        return self.async_cluster_info().get_response()
+
 
 
 class EventsClient(BaseClient):
