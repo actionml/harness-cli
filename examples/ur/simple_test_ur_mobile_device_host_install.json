@@ -1,8 +1,6 @@
 {
   "engineId": "test_ur",
   "engineFactory": "com.actionml.engines.ur.UREngine",
-  "mirrorType": "localfs",
-  "mirrorContainer": "/tmp/test_ur/local_test",
   "sparkConf": {
     "master": "local",
     "spark.driver.memory": "4g",
