@@ -17,8 +17,10 @@ COPY . /harness-cli
 ENV PATH=/harness-cli/harness-cli/:$PATH
 
 RUN apt update && \
-    apt-get install -y tzdata && \
-    dpkg-reconfigure --frontend noninteractive tzdata
+    apt-get install -y tzdata curl unzip build-essential groff less  && \
+    dpkg-reconfigure --frontend noninteractive tzdata && \
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && ./aws/install
 
 RUN apt install -y python3 python3-pip curl openjdk-8-jdk && \
     pip3 install pytz && \
