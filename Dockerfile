@@ -17,7 +17,7 @@ COPY . /harness-cli
 ENV PATH=/harness-cli/harness-cli/:$PATH
 
 RUN apt update && \
-    apt-get install -y tzdata curl unzip build-essential groff less  && \
+    apt-get install -y tzdata curl unzip build-essential groff less nano vim jq && \
     dpkg-reconfigure --frontend noninteractive tzdata && \
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && ./aws/install
