@@ -407,6 +407,39 @@ class EnginesClient(BaseClient):
     def delete(self, engine_id):
         return self.async_delete(engine_id).get_response()
 
+    def delete_user_data(self, engine_id, user_id):
+        """Synchronously delete all user data from Harness Server."""
+        return self.async_delete_user_data(engine_id, user_id).get_response()
+
+    def async_delete_user_data(self, engine_id, user_id):
+        """Asynchronouly delete an event from Harness Server.
+        :param user_id: user id returned by the HarnessServer when creating the
+          event.
+        :returns:
+          AsyncRequest object.
+        """
+        request = AsyncRequest("DELETE", "%s/%s/%s/%s" % (self.path, engine_id, "entities", user_id))
+        request.set_response_handler(self._ok_response_handler)
+        self._connection.make_request(request)
+        return request
+
+    def get_user_data(self, engine_id, user_id):
+        """Synchronously delete all user data from Harness Server."""
+        return self.async_get_user_data(engine_id, user_id).get_response()
+
+    def async_get_user_data(self, engine_id, user_id):
+        """Asynchronouly delete an event from Harness Server.
+        :param user_id: user id returned by the HarnessServer when creating the
+          event.
+        :returns:
+          AsyncRequest object.
+        """
+        request = AsyncRequest("GET", "%s/%s/%s/%s" % (self.path, engine_id, "entities", user_id))
+        print(request)
+        request.set_response_handler(self._ok_response_handler)
+        self._connection.make_request(request)
+        return request
+
 
 class QueriesClient(BaseClient):
     """
