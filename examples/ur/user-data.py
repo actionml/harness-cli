@@ -2,7 +2,7 @@ import urllib.request
 import json
 import argparse
 import csv
-import sys
+import time
 
 
 def get_entity_data(url, engineId, entityId, offset, limit):
@@ -49,7 +49,10 @@ if __name__ == '__main__':
     getPassed = compareEntities(get_entity_data(args.url, args.engineId, args.entityId, args.offset, args.limit),
                        filterByEntityId(parseCsv(args.compare_with), args.entityId))
     deleteEntities(args.url, args.engineId, args.entityId)
-    deletePassed = compareEntities(get_entity_data(args.url, args.engineId, args.entityId, args.offset, args.limit), [])
+    time.sleep(2)
+    deletePassed = not get_entity_data(args.url, args.engineId, args.entityId, args.offset, args.limit)
 
-    if not getPassed or not deletePassed:
-        print("User data tests fail.")
+    if not getPassed:
+        print("Get user data test fails")
+    if not deletePassed:
+        print("Delete user data test fails")
