@@ -6,58 +6,54 @@ echo
 echo -e "${CYAN}Harness CLI Help${NC}"
 echo
 
-echo -e "   ${CYAN}harness-cli add </path/to/engine-config.json>${NC}"
+echo -e "   ${CYAN}hctl add </path/to/engine-config.json>${NC}"
 echo -e "       Create a new engine instance and set it's configuration"
 echo ""
 
-echo -e "   ${CYAN}harness-cli update <engine-config.json>${NC}"
+echo -e "   ${CYAN}hctl update <engine-config.json>${NC}"
 echo -e "       Resets the Engine instance parameters."
 echo ""
 
-echo -e "   ${CYAN}harness-cli import <engine-id> <path/to/events/json/files> ${NC}"
+echo -e "   ${CYAN}hctl import <engine-id> <path/to/events/json/files> ${NC}"
 echo -e "       Imports events into the engine specified. The path can be to a directory or a single file."
 echo ""
 
-echo -e "   ${CYAN}harness-cli delete <engine-id>${NC}"
+echo -e "   ${CYAN}hctl delete <engine-id>${NC}"
 echo -e "       Deletes engine and all data"
 echo ""
 
-echo -e "   ${CYAN}harness-cli train <engine-id>${NC}"
+echo -e "   ${CYAN}hctl train <engine-id>${NC}"
 echo -e "       For batch trained Engines this creates a model from previously accumulated data."
 echo ""
 
-echo -e "   ${CYAN}harness-cli cancel <engine-id> <job-id${NC}"
+echo -e "   ${CYAN}hctl cancel <engine-id> <job-id>${NC}"
 echo -e "       Cancels a train job. Import jobs cannot be canceled."
 echo ""
 
-echo -e "   ${CYAN}harness-cli status [[ engines | engines <engine-id>]]${NC}"
-echo -e "       Prints a status message for the Harness CLI, all engines, or the engine specified."
-echo ""
-
-echo -e "   ${CYAN}harness-cli system${NC}"
-echo -e "       Prints a message about build version numbers and other CLI and Server info."
+echo -e "   ${CYAN}hctl status [[ engines | engines <engine-id> | system ]]${NC}"
+echo -e "       Prints a status message for the Harness CLI or the objects specified."
 echo ""
 
 echo
 echo -e "${CYAN}Harness Auth CLI Help${NC}"
 echo
 
-echo -e "   ${CYAN}harness-cli user-add [client <engine-id> | admin]${NC}"
+echo -e "   ${CYAN}hctl user-add [client <engine-id> | admin]${NC}"
 echo -e "       Returns a new user-id their secret. Grants the role's permissions."
 echo ""
 
-echo -e "   ${CYAN}harness-cli user-delete <user-id>${NC}"
+echo -e "   ${CYAN}hctl user-delete <user-id>${NC}"
 echo -e "       Returns the user-id for the deleted user and deletes all attached permissions."
 echo ""
 
-echo -e "   ${CYAN}harness-cli grant <user-id> [client <engine-id> | admin]${NC}"
+echo -e "   ${CYAN}hctl grant <user-id> [client <engine-id> | admin]${NC}"
 echo -e "       Returns true if permissions are added to the user-id"
 echo ""
 
-echo -e "   ${CYAN}harness-cli revoke <user-id> [client <engine-id>| admin]${NC}"
+echo -e "   ${CYAN}hctl revoke <user-id> [client <engine-id>| admin]${NC}"
 echo -e "       Revokes the user permissions for the engine specified, or removes admin permissions."
 echo ""
 
-echo -e "   ${CYAN}harness-cli status users [<user-id>]${NC}"
+echo -e "   ${CYAN}hctl status users [<user-id>]${NC}"
 echo -e "       Prints the permissions for all users, or the user specified."
 echo ""

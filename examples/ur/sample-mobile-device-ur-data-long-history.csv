@@ -1,0 +1,259 @@
+u1,purchase,iPhone XS
+u1,purchase,iPhone XR
+u1,purchase,iPhone 8
+u1,purchase,iPad Pro
+U 2,purchase,Pixel Slate
+U 2,purchase,Galaxy 8
+u-3,purchase,Surface Pro
+u-4,purchase,iPhone XR
+u-4,purchase,iPhone XR
+u-4,purchase,iPhone XR
+u-4,purchase,iPhone XR
+u-4,purchase,iPhone 8
+u-4,purchase,Galaxy 8
+u1,view,Phones
+u1,view,Phones
+u1,view,Phones
+u1,view,Phones
+u1,view,Phones
+u1,view,Phones
+u1,view,Mobile-acc
+U 2,view,Phones
+U 2,view,Tablets
+U 2,view,Mobile-acc
+u-3,view,Mobile-acc
+u-4,view,Phones
+u-4,view,Tablets
+u-4,view,Soap
+u5,view,Soap
+u1,category-pref,phones
+u1,category-pref,phones
+u1,category-pref,phones
+u1,category-pref,tablets
+U 2,category-pref,tablets
+U 2,category-pref,phones
+u-3,category-pref,tablets
+u-4,category-pref,phones
+u-4,category-pref,phones
+u5,category-pref,toiletries
+iPhone XS,$set,categories:Phones:Electronics:Apple
+iPhone XR,$set,categories:Phones:Electronics:Apple
+iPhone 8,$set,categories:Phones:Electronics:Apple
+iPad Pro,$set,categories:Tablets:Electronics:Apple
+Pixel Slate,$set,categories:Tablets:Electronics:Google
+Galaxy 8,$set,categories:Phones:Electronics:Samsung
+Surface Pro,$set,categories:Tablets:Electronics:Microsoft
+iPhone 8,$set,countries:United States:Canada:Estados Unidos Mexicanos
+iPad Pro,$set,countries:United States:Estados Unidos Mexicanos
+Pixel Slate,$set,countries:United States:Canada
+Galaxy 8,$set,countries:United States
+Surface Pro,$set,countries:United States:Canada
+iPhone XS,$set,categories:Cameras
+iPhone XR,$set,categories:Cameras
+iPhone 8,$set,categories:Cameras
+iPad Pro,$set,categories:Computers
+Pixel Slate,$set,categories:Computers
+Galaxy 8,$set,categories:Cameras
+Surface Pro,$set,categories:Computers
+iPhone 8,$set,countries:Cuba
+iPad Pro,$set,countries:Cuba
+Pixel Slate,$set,countries:Cuba
+Galaxy 8,$set,countries:Cuba
+Surface Pro,$set,countries:Cuba
+u1,purchase,iPhone XS
+u1,purchase,iPhone XR
+u1,purchase,iPhone 8
+u1,purchase,iPad Pro
+U 2,purchase,Pixel Slate
+U 2,purchase,Galaxy 8
+u-3,purchase,Surface Pro
+u-4,purchase,iPhone XR
+u-4,purchase,iPhone 8
+u-4,purchase,Galaxy 8
+u1,view,Phones
+u1,view,Mobile-acc
+U 2,view,Phones
+U 2,view,Tablets
+U 2,view,Mobile-acc
+u-3,view,Mobile-acc
+u-4,view,Phones
+u-4,view,Tablets
+u-4,view,Soap
+u5,view,Soap
+u1,purchase,Galaxy 8
+u1,purchase,Galaxy 8
+u1,purchase,Galaxy 8
+u1,purchase,Galaxy 8
+u1,view,Galaxy 8
+U 2,purchase,iPhone XR
+U 2,purchase,iPhone XR
+u1,view,Soap
+u1,view,Soap
+u-3,view,Mobile-acc
+u-4,view,Mobile-acc
+u-4,view,Mobile-acc
+iPhone XS,$set,categories:Phones:Electronics:Apple
+iPhone XR,$set,categories:Phones:Electronics:Apple
+iPhone 8,$set,categories:Phones:Electronics:Apple
+iPad Pro,$set,categories:Tablets:Electronics:Apple
+Pixel Slate,$set,categories:Tablets:Electronics:Google
+Galaxy 8,$set,categories:Phones:Electronics:Samsung
+Surface Pro,$set,categories:Tablets:Electronics:Microsoft
+iPhone 8,$set,countries:United States:Canada:Estados Unidos Mexicanos
+iPad Pro,$set,countries:United States:Estados Unidos Mexicanos
+Pixel Slate,$set,countries:United States:Canada
+Galaxy 8,$set,countries:United States
+Surface Pro,$set,countries:United States:Canada
+u1,purchase,iPhone Case
+u1,purchase, AirPods
+U 2,purchase,USB-C
+u-3,purchase,Sleeve
+u-4,purchase,USB-C Ear Buds
+u-4,purchase,USB-C
+u1,view,Orders
+u1,view,Past Orders
+U 2,view,Orders
+U 2,view,Accessories
+u-3,view,Accessories
+u-4,view,Orders
+u-4,view,Phones
+u-4,view,Clothing
+u5,view,Clothing
+u1,category-pref,Toys
+u1,category-pref,Videos
+u1,category-pref,Electronics
+U 2,category-pref,Toys
+U 2,category-pref,Electronics
+u-3,category-pref,Videos
+u-4,category-pref,Videos
+u-4,category-pref,Games
+u5,category-pref,Games
+u1,purchase,item 1
+u1,purchase,item 2
+u1,purchase,item 3
+u1,purchase,item 4
+u1,purchase,item 5
+u1,purchase,item 6
+u1,purchase,item 7
+u1,purchase,item 8
+u1,purchase,item 9
+u1,purchase,item 10
+u1,purchase,item 11
+u1,purchase,item 12
+u1,purchase,item 13
+u1,purchase,item 14
+u1,purchase,item 15
+u1,purchase,item 16
+u1,purchase,item 17
+u1,purchase,item 18
+u1,purchase,item 19
+u1,purchase,item 20
+u1,purchase,item 21
+u1,purchase,item 22
+u1,purchase,item 23
+u1,purchase,item 24
+u1,purchase,item 25
+u1,purchase,item 26
+u1,purchase,item 27
+u1,purchase,item 28
+u1,purchase,item 29
+u1,purchase,item 30
+u1,purchase,item 31
+u1,purchase,item 32
+u1,purchase,item 33
+u1,purchase,item 34
+u1,purchase,item 35
+u1,purchase,item 36
+u1,purchase,item 37
+u1,purchase,item 38
+u1,purchase,item 39
+u1,purchase,item 40
+u1,purchase,item 41
+u1,purchase,item 42
+u1,purchase,item 43
+u1,purchase,item 44
+u1,purchase,item 45
+u1,purchase,item 46
+u1,purchase,item 47
+u1,purchase,item 48
+u1,purchase,item 49
+u1,purchase,item 50
+u1,purchase,item 51
+u1,purchase,item 52
+u1,purchase,item 53
+u1,purchase,item 54
+u1,purchase,item 55
+u1,purchase,item 56
+u1,purchase,item 57
+u1,purchase,item 58
+u1,purchase,item 59
+u1,purchase,item 60
+u1,purchase,item 61
+u1,purchase,item 62
+u1,purchase,item 63
+u1,purchase,item 64
+u1,purchase,item 65
+u1,purchase,item 66
+u1,purchase,item 67
+u1,purchase,item 68
+u1,purchase,item 69
+u1,purchase,item 70
+u1,purchase,item 71
+u1,purchase,item 72
+u1,purchase,item 73
+u1,purchase,item 74
+u1,purchase,item 75
+u1,purchase,item 76
+u1,purchase,item 77
+u1,purchase,item 78
+u1,purchase,item 79
+u1,purchase,item 80
+u1,purchase,item 81
+u1,purchase,item 82
+u1,purchase,item 83
+u1,purchase,item 84
+u1,purchase,item 85
+u1,purchase,item 86
+u1,purchase,item 87
+u1,purchase,item 88
+u1,purchase,item 89
+u1,purchase,item 90
+u1,purchase,item 91
+u1,purchase,item 92
+u1,purchase,item 93
+u1,purchase,item 94
+u1,purchase,item 95
+u1,purchase,item 96
+u1,purchase,item 97
+u1,purchase,item 98
+u1,purchase,item 99
+u1,purchase,item 100
+u1,purchase,item 101
+u1,purchase,item 102
+u1,purchase,item 103
+u1,purchase,item 104
+u1,purchase,item 105
+u1,purchase,item 106
+u1,purchase,item 107
+u1,purchase,item 108
+u1,purchase,item 109
+u1,purchase,item 110
+u1,purchase,item 111
+u1,purchase,item 112
+u1,purchase,item 113
+u1,purchase,item 114
+u1,purchase,item 115
+u1,purchase,item 116
+u1,purchase,item 117
+u1,purchase,item 118
+u1,purchase,item 119
+u1,purchase,item 120
+u1,purchase,item 121
+u1,purchase,item 122
+u1,purchase,item 123
+u1,purchase,item 124
+u1,purchase,item 125
+u1,purchase,item 126
+u1,purchase,item 127
+u1,purchase,item 128
+u1,purchase,item 129

@@ -121,6 +121,10 @@ else
    diff ${actual_query_results} ${expected_test_results} > ${diffs_and_errors_file}
    cat ${actual_query_results} | grep "error" >> ${diffs_and_errors_file_property_changes}
 
+   echo "Running Phase 3: User data"
+   python3 examples/ur/user-data.py --url ${host_url} --engineId test_ur --entityId u1 --compare-with ${user_events} >> ${diffs_and_errors_file_property_changes}
+   echo
+
    if [ -s ${diffs_and_errors_file_property_changes} ]
    then
        echo "Input, train, query tests pass but realtime model updates test fails"

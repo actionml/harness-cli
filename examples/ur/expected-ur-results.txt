@@ -1,4 +1,3 @@
-Queries to: http://localhost:9090
 
 +++++++++++++ User-based     +++++++++++++
 
